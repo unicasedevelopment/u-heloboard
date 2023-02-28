@@ -14,6 +14,7 @@ use App\Models\Informasi_Pembayaran;
 use App\Models\Informasi_Perpajakan;
 use App\Models\Informasi_Lampiran;
 use App\Models\Dokumen_Pengajuan;
+use App\Models\Informasi_Detail_Refund;
 
 
 class Pengajuan_Dana_Controller extends Controller
@@ -162,6 +163,14 @@ class Pengajuan_Dana_Controller extends Controller
                     Informasi_Perpajakan::create($informasi_perpajakan[$i]);
                 }
 
+            }else{
+                if($validate_data['id_kategori'] == 3 ){
+                    $detail_refund = (array) json_decode($request->post('detail_info_refund'),true);
+
+                    $detail_refund["id_pengajuan"] = $pengajuan_dana->id;
+
+                    $refund = Informasi_Detail_Refund::create($detail_refund);
+                }
             }
             if($nama_lampiran != null){
 

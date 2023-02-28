@@ -272,11 +272,8 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label" for="alasan_refund">Alasan Refund</label>
                                 <div class="col-sm-8">
-                                    <select name="alasan_refund" id="alasan_refund" required="reuqired"
-                                        class="form-control form-control-sm select2" data-select2-id="23">
-                                        <option value="">Pilih</option>
-                                        <option value=""></option>
-                                    </select>
+                                    <input type="text" name="alasan_refund" id="alasan_refund"
+                                        class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -291,11 +288,8 @@
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label" for="pilihan_cashback">Pilihan Cashback</label>
                                 <div class="col-sm-8">
-                                    <select name="pilihan_cashback" id="pilihan_cashback" required="reuqired"
-                                        class="form-control form-control-sm select2" data-select2-id="24">
-                                        <option value="">Pilih</option>
-                                        <option value=""></option>
-                                    </select>
+                                    <input type="text" name="pilihan_cashback" id="pilihan_cashback"
+                                        class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="form-group row">

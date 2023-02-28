@@ -735,89 +735,90 @@ $(document).ready(function() {
     });
 
     function cek_status_pajak(){
-        console.log('cek status pajak')
-
-        if( $('#checkbox_pajak_2').prop('checked') == true ){
-            if( $('#checkbox_pajak_1').prop('checked') == true ){
-                if ($('#status_pajak_2').val() == 'tanggung') {
-                    $('#nominal_trf').attr('readonly',true);
-                    enable_nominal("2", "tanggung", null ,true)
+        var id_kategori = $('#id_kategori').val();
+        if(id_kategori <= 2){
+            if( $('#checkbox_pajak_2').prop('checked') == true ){
+                if( $('#checkbox_pajak_1').prop('checked') == true ){
+                    if ($('#status_pajak_2').val() == 'tanggung') {
+                        $('#nominal_trf').attr('readonly',true);
+                        enable_nominal(id_kategori,"2", "tanggung", null ,true)
+                    }else{
+                        $('#nominal_trf').attr('readonly',true);
+                        if($('#jenis_vendor').val() == 'nonekspedisi'){
+                            enable_nominal(id_kategori,"2", "potong", "nonekspedisi", true)
+                        }else{
+                            enable_nominal(id_kategori,"2", "potong", "ekspedisi", true)
+                        }
+                    }
+                }else{
+                    if ($('#status_pajak_2').val() == 'tanggung') {
+                        $('#nominal_inv').attr('readonly',true);
+                        enable_nominal(id_kategori,"2", "tanggung", null ,false)
+                    }else{
+                        $('#nominal_trf').attr('readonly',true);
+                        enable_nominal(id_kategori,"2", "potong", null ,false)
+                    }
+                }
+            }else if( $('#checkbox_pajak_3').prop('checked') == true ){
+                if ($('#status_pajak_3').val() == 'tanggung') {
+                    $('#nominal_inv').attr('readonly',true);
+                    enable_nominal(id_kategori,"3", "tanggung", null , null)
                 }else{
                     $('#nominal_trf').attr('readonly',true);
-                    if($('#jenis_vendor').val() == 'nonekspedisi'){
-                        enable_nominal("2", "potong", "nonekspedisi", true)
+                    enable_nominal(id_kategori,"3", "potong", null, null)
+                }
+            }else if( $('#checkbox_pajak_4').prop('checked') == true ){
+                if ($('#status_pajak_4').val() == 'tanggung') {
+                    $('#nominal_inv').attr('readonly',true);
+                    enable_nominal(id_kategori,"4", "tanggung", null , null)
+                }else{
+                    $('#nominal_trf').attr('readonly',true);
+                    enable_nominal(id_kategori,"4", "potong", null, null)
+                }
+            }else if( $('#checkbox_pajak_5').prop('checked') == true ){
+                if ($('#status_pajak_5').val() == 'tanggung') {
+                    $('#nominal_inv').attr('readonly',true);
+                    enable_nominal(id_kategori,"5", "tanggung", null , null)
+                }else{
+                    $('#nominal_trf').attr('readonly',true);
+                    enable_nominal(id_kategori,"5", "potong", null, null)
+                }
+            }else if( $('#checkbox_pajak_6').prop('checked') == true ){
+                if( $('#checkbox_pajak_1').prop('checked') == true ){
+                    if ($('#status_pajak_6').val() == 'tanggung') {
+                        $('#nominal_trf').attr('readonly',true);
+                        enable_nominal(id_kategori,"6", "tanggung", null ,true)
                     }else{
-                        enable_nominal("2", "potong", "ekspedisi", true)
+                        $('#nominal_trf').attr('readonly',true);
+                        if($('#jenis_vendor').val() == 'reguler'){
+                            enable_nominal(id_kategori,"6", "potong", "reguler", true)
+                        }else{
+                            enable_nominal(id_kategori,"6", "potong", "nonreguler", true)
+                        }
+                    }
+                }else{
+                    if ($('#status_pajak_6').val() == 'tanggung') {
+                        $('#nominal_inv').attr('readonly',true);
+                        enable_nominal(id_kategori,"6", "tanggung", null ,false)
+                    }else{
+                        $('#nominal_trf').attr('readonly',true);
+                        enable_nominal(id_kategori,"6", "potong", null ,false)
                     }
                 }
             }else{
-                if ($('#status_pajak_2').val() == 'tanggung') {
-                    $('#nominal_inv').attr('readonly',true);
-                    enable_nominal("2", "tanggung", null ,false)
-                }else{
-                    $('#nominal_trf').attr('readonly',true);
-                    enable_nominal("2", "potong", null ,false)
-                }
-            }
-        }else if( $('#checkbox_pajak_3').prop('checked') == true ){
-            if ($('#status_pajak_3').val() == 'tanggung') {
-                $('#nominal_inv').attr('readonly',true);
-                enable_nominal("3", "tanggung", null , null)
-            }else{
-                $('#nominal_trf').attr('readonly',true);
-                enable_nominal("3", "potong", null, null)
-            }
-        }else if( $('#checkbox_pajak_4').prop('checked') == true ){
-            if ($('#status_pajak_4').val() == 'tanggung') {
-                $('#nominal_inv').attr('readonly',true);
-                enable_nominal("4", "tanggung", null , null)
-            }else{
-                $('#nominal_trf').attr('readonly',true);
-                enable_nominal("4", "potong", null, null)
-            }
-        }else if( $('#checkbox_pajak_5').prop('checked') == true ){
-            if ($('#status_pajak_5').val() == 'tanggung') {
-                $('#nominal_inv').attr('readonly',true);
-                enable_nominal("5", "tanggung", null , null)
-            }else{
-                $('#nominal_trf').attr('readonly',true);
-                enable_nominal("5", "potong", null, null)
-            }
-        }else if( $('#checkbox_pajak_6').prop('checked') == true ){
-            if( $('#checkbox_pajak_1').prop('checked') == true ){
-                if ($('#status_pajak_6').val() == 'tanggung') {
-                    $('#nominal_trf').attr('readonly',true);
-                    enable_nominal("6", "tanggung", null ,true)
-                }else{
-                    $('#nominal_trf').attr('readonly',true);
-                    if($('#jenis_vendor').val() == 'reguler'){
-                        enable_nominal("6", "potong", "reguler", true)
-                    }else{
-                        enable_nominal("6", "potong", "nonreguler", true)
-                    }
-                }
-            }else{
-                if ($('#status_pajak_6').val() == 'tanggung') {
-                    $('#nominal_inv').attr('readonly',true);
-                    enable_nominal("6", "tanggung", null ,false)
-                }else{
-                    $('#nominal_trf').attr('readonly',true);
-                    enable_nominal("6", "potong", null ,false)
+                console.log('kat 1')
+                if ($('#id_kategori').val() == 2){
+                    $('#id_metode').attr('disabled', false);
+                    enable_nominal(id_kategori,"1", null, null ,null)
                 }
             }
         }else{
-            console.log('kat 1')
-            if ($('#id_kategori').val() == 2){
-                console.log('jalan')
-                $('#id_metode').attr('disabled', false);
-                enable_nominal("1", null, null ,null)
-            }
+            $('#id_metode').attr('disabled', false);
+            enable_nominal(id_kategori,null, null, null ,null)
         }
 
-        function enable_nominal(jenis_pajak, status_pajak, jenis_vendor, ppn){
-            console.log('enable nominal')
-            // var nominal = document.getElementById("nominal");
 
+        function enable_nominal(id_kategori,jenis_pajak, status_pajak, jenis_vendor, ppn){
 
             var nominal_inv = document.getElementById("nominal_inv");
             var nominal_trf = document.getElementById("nominal_trf");
@@ -826,22 +827,7 @@ $(document).ready(function() {
             if(nominal_inv != undefined){
                 nominal_inv.addEventListener("input", function() {
                     $(this).val($(this).val().replace(/[^0-9]/g, ''));
-                    set_nominal(this.value, null, jenis_pajak, status_pajak, jenis_vendor, ppn);
-                    // if($('#jenis_vendor').val() == ''){
-                    //     Swal.fire({
-                    //         title: "Perhitungan Nominal Gagal",
-                    //         text: "Pastikan anda sudah mengisi kategori vendor",
-                    //         icon: "warning",
-                    //         confirmButtonColor: '#7cd1f9',
-                    //     });
-                    //     $(this).val('');
-                    //     $('#jenis_vendor').focus();
-                    // }else{
-
-                    //     $(this).val($(this).val().replace(/[^0-9]/g, ''));
-
-                    //     set_nominal(this.value, null, jenis_pajak, status_pajak, jenis_vendor);
-                    // }
+                    set_nominal(this.value, null,id_kategori, jenis_pajak, status_pajak, jenis_vendor, ppn);
                 });
             }
 
@@ -849,136 +835,126 @@ $(document).ready(function() {
                 nominal_trf.addEventListener("input", function() {
                     console.log('test')
                     $(this).val($(this).val().replace(/[^0-9]/g, ''));
-                    set_nominal(null, this.value, jenis_pajak, status_pajak, jenis_vendor, ppn);
-                    // if($('#jenis_vendor').val() == ''){
-                    //     Swal.fire({
-                    //         title: "Perhitungan Nominal Gagal",
-                    //         text: "Pastikan anda sudah mengisi kategori vendor",
-                    //         icon: "warning",
-                    //         confirmButtonColor: '#7cd1f9',
-                    //     });
-                    //     $(this).val('');
-                    //     document.getElementById('jenis_vendor').focus();
-                    // }else{
-                    //     $(this).val($(this).val().replace(/[^0-9]/g, ''));
-                    //     set_nominal(null, this.value, jenis_pajak, status_pajak, jenis_vendor);
-                    // }
-
+                    set_nominal(null, this.value, id_kategori,jenis_pajak, status_pajak, jenis_vendor, ppn);
                 });
             }
         }
     }
 
-    function set_nominal(invoice, transfer, jenis_pajak, status_pajak, jenis_vendor, ppn) {
+    function set_nominal(invoice, transfer, id_kategori, jenis_pajak, status_pajak, jenis_vendor, ppn) {
+        if(id_kategori <=2 ){
 
-        if(jenis_pajak == '1'){
-            // nominal_inv.value = formatRupiah(invoice);
-            nominal_trf.value = formatRupiah(transfer);
-        }
+            if(jenis_pajak == '1'){
+                nominal_trf.value = formatRupiah(transfer);
+            }
 
-        if(jenis_pajak == '2'){
-            if( ppn == true){
-                if(status_pajak == 'tanggung'){
-                    nominal_inv.value = formatRupiah(invoice);
-                    nominal_trf.value = formatRupiah(invoice);
-                }else{
-                    if(jenis_vendor == 'ekspedisi'){
-                        dpp = invoice * 100 / 101.1 ;
-                        ppn = invoice - dpp;
-                        transfer = (dpp*98/100) + ppn ;
-                        nominal_trf.value = formatRupiah(transfer.toFixed(0));
+            if(jenis_pajak == '2'){
+                if( ppn == true){
+                    if(status_pajak == 'tanggung'){
                         nominal_inv.value = formatRupiah(invoice);
-
+                        nominal_trf.value = formatRupiah(invoice);
                     }else{
-                        dpp = invoice * 100 / 111 ;
-                        ppn = invoice - dpp;
-                        transfer = (dpp*98/100) + ppn ;
+                        if(jenis_vendor == 'ekspedisi'){
+                            dpp = invoice * 100 / 101.1 ;
+                            ppn = invoice - dpp;
+                            transfer = (dpp*98/100) + ppn ;
+                            nominal_trf.value = formatRupiah(transfer.toFixed(0));
+                            nominal_inv.value = formatRupiah(invoice);
+
+                        }else{
+                            dpp = invoice * 100 / 111 ;
+                            ppn = invoice - dpp;
+                            transfer = (dpp*98/100) + ppn ;
+                            nominal_trf.value = formatRupiah(transfer.toFixed(0));
+                            nominal_inv.value = formatRupiah(invoice);
+                        }
+                    }
+                }else{
+                    if(status_pajak == 'tanggung'){
+                        invoice = transfer * 100 / 98 ;
+                        nominal_inv.value = formatRupiah(invoice.toFixed(0));
+                        nominal_trf.value = formatRupiah(transfer);
+                    }else{
+                        transfer = invoice * 98 / 100 ;
                         nominal_trf.value = formatRupiah(transfer.toFixed(0));
                         nominal_inv.value = formatRupiah(invoice);
                     }
                 }
-            }else{
+            }
+
+            if(jenis_pajak == '3'){
                 if(status_pajak == 'tanggung'){
-                    invoice = transfer * 100 / 98 ;
+                    invoice = transfer * 100 / 97.5 ;
                     nominal_inv.value = formatRupiah(invoice.toFixed(0));
                     nominal_trf.value = formatRupiah(transfer);
                 }else{
-                    transfer = invoice * 98 / 100 ;
+                    transfer = invoice * 97.5 / 100 ;
                     nominal_trf.value = formatRupiah(transfer.toFixed(0));
                     nominal_inv.value = formatRupiah(invoice);
                 }
             }
-        }
 
-        if(jenis_pajak == '3'){
-            if(status_pajak == 'tanggung'){
-                invoice = transfer * 100 / 97.5 ;
-                nominal_inv.value = formatRupiah(invoice.toFixed(0));
-                nominal_trf.value = formatRupiah(transfer);
-            }else{
-                transfer = invoice * 97.5 / 100 ;
-                nominal_trf.value = formatRupiah(transfer.toFixed(0));
-                nominal_inv.value = formatRupiah(invoice);
-            }
-        }
-
-        if(jenis_pajak == '4' || jenis_pajak == '5'){
-            if(status_pajak == 'tanggung'){
-                invoice = transfer * 100 / 97 ;
-                nominal_inv.value = formatRupiah(invoice.toFixed(0));
-                nominal_trf.value = formatRupiah(transfer);
-            }else{
-                transfer = invoice * 97 / 100 ;
-                nominal_trf.value = formatRupiah(transfer.toFixed(0));
-                nominal_inv.value = formatRupiah(invoice);
-            }
-        }
-
-        if(jenis_pajak == '6'){
-            if( ppn == true){
+            if(jenis_pajak == '4' || jenis_pajak == '5'){
                 if(status_pajak == 'tanggung'){
+                    invoice = transfer * 100 / 97 ;
+                    nominal_inv.value = formatRupiah(invoice.toFixed(0));
+                    nominal_trf.value = formatRupiah(transfer);
+                }else{
+                    transfer = invoice * 97 / 100 ;
+                    nominal_trf.value = formatRupiah(transfer.toFixed(0));
                     nominal_inv.value = formatRupiah(invoice);
-                    nominal_trf.value = formatRupiah(invoice);
-                }else{
-                    dpp = invoice * 100 / 111 ;
-
-                    if(jenis_vendor == 'reguler'){
-                        ppn = invoice - dpp;
-                        transfer = (dpp*90/100) + ppn ;
-                        nominal_trf.value = formatRupiah(transfer.toFixed(0));
-                        nominal_inv.value = formatRupiah(invoice);
-
-                    }else{
-                        ppn = invoice - dpp;
-                        transfer = (dpp*99.5/100) + ppn ;
-                        nominal_trf.value = formatRupiah(transfer.toFixed(0));
-                        nominal_inv.value = formatRupiah(invoice);
-                    }
                 }
-            }else{
-                if(jenis_vendor == 'reguler'){
+            }
+
+            if(jenis_pajak == '6'){
+                if( ppn == true){
                     if(status_pajak == 'tanggung'){
-                        invoice = transfer * 100 / 90 ;
-                        nominal_inv.value = formatRupiah(invoice.toFixed(0));
-                        nominal_trf.value = formatRupiah(transfer);
-                    }else{
-                        transfer = invoice * 90 / 100 ;
-                        nominal_trf.value = formatRupiah(transfer.toFixed(0));
                         nominal_inv.value = formatRupiah(invoice);
+                        nominal_trf.value = formatRupiah(invoice);
+                    }else{
+                        dpp = invoice * 100 / 111 ;
+
+                        if(jenis_vendor == 'reguler'){
+                            ppn = invoice - dpp;
+                            transfer = (dpp*90/100) + ppn ;
+                            nominal_trf.value = formatRupiah(transfer.toFixed(0));
+                            nominal_inv.value = formatRupiah(invoice);
+
+                        }else{
+                            ppn = invoice - dpp;
+                            transfer = (dpp*99.5/100) + ppn ;
+                            nominal_trf.value = formatRupiah(transfer.toFixed(0));
+                            nominal_inv.value = formatRupiah(invoice);
+                        }
                     }
                 }else{
-                    if(status_pajak == 'tanggung'){
-                        invoice = transfer * 100 / 99.5 ;
-                        nominal_inv.value = formatRupiah(invoice.toFixed(0));
-                        nominal_trf.value = formatRupiah(transfer);
+                    if(jenis_vendor == 'reguler'){
+                        if(status_pajak == 'tanggung'){
+                            invoice = transfer * 100 / 90 ;
+                            nominal_inv.value = formatRupiah(invoice.toFixed(0));
+                            nominal_trf.value = formatRupiah(transfer);
+                        }else{
+                            transfer = invoice * 90 / 100 ;
+                            nominal_trf.value = formatRupiah(transfer.toFixed(0));
+                            nominal_inv.value = formatRupiah(invoice);
+                        }
                     }else{
-                        transfer = invoice * 99.5 / 100 ;
-                        nominal_trf.value = formatRupiah(transfer.toFixed(0));
-                        nominal_inv.value = formatRupiah(invoice);
+                        if(status_pajak == 'tanggung'){
+                            invoice = transfer * 100 / 99.5 ;
+                            nominal_inv.value = formatRupiah(invoice.toFixed(0));
+                            nominal_trf.value = formatRupiah(transfer);
+                        }else{
+                            transfer = invoice * 99.5 / 100 ;
+                            nominal_trf.value = formatRupiah(transfer.toFixed(0));
+                            nominal_inv.value = formatRupiah(invoice);
+                        }
                     }
                 }
             }
+        }else{
+            nominal_trf.value = formatRupiah(transfer);
         }
+
 
         function formatRupiah(angka) {
             var number_string = angka.replace(/[^,\d]/g, "").toString(),
@@ -1177,7 +1153,7 @@ $(document).ready(function() {
     }
     function get_data_detail_info_refund(id_kategori){
         let data_detail_info_refund = null;
-        if(id_kategori == 4){
+        if(id_kategori == 3){
             let no_invoice = $('#no_inv').val();
             let no_retur = $('#no_retur').val();
             let alasan_refund = $('#alasan_refund').val();
@@ -1281,7 +1257,7 @@ $(document).ready(function() {
 
 
         var data_pajak = get_data_pajak(id_kategori);
-        var deatil_info_refund = get_data_detail_info_refund(id_kategori);
+        var detail_info_refund = get_data_detail_info_refund(id_kategori);
         var data_pembayaran = get_data_pembayaran(id_metode);
 
         // var data_lampiran = get_lampiran_lain();
@@ -1291,7 +1267,7 @@ $(document).ready(function() {
         form_data.append('keperluan',keperluan);
         form_data.append('tgl_pengajuan',tgl_pengajuan);
         form_data.append('data_pajak',JSON.stringify(data_pajak));
-        form_data.append('deatil_info_refund',JSON.stringify(deatil_info_refund));
+        form_data.append('detail_info_refund',JSON.stringify(detail_info_refund));
         form_data.append('data_pembayaran',JSON.stringify(data_pembayaran));
         // form_data.append('data_lampiran',JSON.stringify(data_lampiran));
 
