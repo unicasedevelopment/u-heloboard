@@ -275,7 +275,7 @@ $(document).ready(function() {
 
         doc.setFontSize(8);
         doc.text("Nama :", 23, yPos);
-        doc.text(nama, 37, yPos);
+        doc.text(nama, 33, yPos);
         doc.text("Nama :", 64.5, yPos);
         doc.text("Nama :", 108, yPos);
         doc.text("Nama :", 150.5, yPos);
@@ -283,7 +283,7 @@ $(document).ready(function() {
         doc.line(20, yPos, 190, yPos);
         yPos += 5;
         doc.text("Tanggal :", 23, yPos);
-        doc.text(date, 40, yPos);
+        doc.text(date, 36, yPos);
         doc.text("Tanggal :", 64.5, yPos);
         doc.text("Tanggal :", 108, yPos);
         doc.text("Tanggal :", 150.5, yPos);
@@ -311,26 +311,75 @@ $(document).ready(function() {
         doc.setFontType('reguler');
         doc.setFontType('bold');
 
-        doc.text("A.", 20, yPos);
-        doc.text("Informasi Perjalanan Dinas", 30, yPos);
-        yPos += 5;
+        // doc.text("A.", 20, yPos);
+        // doc.text("Informasi Perjalanan Dinas", 30, yPos);
+        // yPos += 5;
 
         doc.setFontType('regular');
-        doc.text("No. Surat Tugas", 35, yPos);
-        doc.text(":", 80, yPos);
-        doc.text(no_surat_tugas, 85, yPos);
+        doc.text("Sehubungan dengan, ", 20, yPos);
         yPos += 5;
 
-        doc.text("No. FPPD", 35, yPos);
-        doc.text(":", 80, yPos);
-        doc.text(no_surat, 85, yPos);
+        doc.text("No. Surat Tugas", 20, yPos);
+        doc.text(":", 70, yPos);
+        doc.text(no_surat_tugas, 75, yPos);
         yPos += 5;
 
-        doc.text("Alasan Pembatalan", 35, yPos);
-        doc.text(":", 80, yPos);
+        doc.text("No. FPPD", 20, yPos);
+        doc.text(":", 70, yPos);
+        doc.text(no_surat, 75, yPos);
+        yPos += 5;
+
+        doc.text("Tanggal", 20, yPos);
+        doc.text(":", 70, yPos);
+        doc.text(tgl_keberangkatan+" s.d "+tgl_kedatangan, 75, yPos);
+        yPos += 10;
+
+        doc.text("Dengan ini mengajukan Pembatalan perjalanan Dinas dikarenakan, ", 20, yPos);
+        yPos += 5;
+
+        doc.text("Alasan Pembatalan", 20, yPos);
+        doc.text(":", 70, yPos);
+
         // doc.text(jabatan, 85, yPos);
 
         yPos += 30;
+
+        doc.text("Maka dengan ini, ", 20, yPos);
+        yPos += 8;
+
+        // garis vertical
+        doc.line(20, yPos-4, 20, yPos);
+        doc.line(20, yPos-4, 24, yPos-4);
+        doc.line(20, yPos, 24, yPos);
+        doc.line(24, yPos-4, 24, yPos);
+        // doc.line(62.5, yPos+49, 62.5, yPos);
+        // doc.line(105, yPos+49, 105, yPos);
+        // doc.line(147.5, yPos+49, 147.5, yPos);
+        // doc.line(190, yPos+49, 190, yPos);
+
+        // doc.text("2.", 20, yPos);
+        doc.text("Melakukan pembatalan pencairan dana ke admin finance", 28, yPos);
+        yPos += 8;
+
+        // doc.text("1.", 20, yPos);
+        doc.line(20, yPos-4, 20, yPos);
+        doc.line(20, yPos-4, 24, yPos-4);
+        doc.line(20, yPos, 24, yPos);
+        doc.line(24, yPos-4, 24, yPos);
+        doc.text("Melakukan pengembalian dana perjalanan dinas yang akan telah diterima kepada admin finace dengan cara ", 28, yPos);
+        yPos += 5;
+        doc.text("cash atau transfer ke rekening BCA dengan nomor 4401294788 (a.n Hardian Tanoko)", 28, yPos);
+        yPos += 8;
+
+        // doc.text("2.", 20, yPos);
+        doc.line(20, yPos-4, 20, yPos);
+        doc.line(20, yPos-4, 24, yPos-4);
+        doc.line(20, yPos, 24, yPos);
+        doc.line(24, yPos-4, 24, yPos);
+        doc.text("Melakukan konfirmasi ke tim GA untuk pembatalan akomodasi dan transportasi", 28, yPos);
+        yPos += 10;
+
+
 
         // garis vertical
         doc.line(20, yPos+49, 20, yPos);
@@ -379,6 +428,16 @@ $(document).ready(function() {
         doc.text("Tanggal :", 150.5, yPos);
         yPos += 3;
         doc.line(20, yPos, 190, yPos);
+
+        yPos += 30;
+        doc.setFontType('bold');
+        doc.setTextColor(255,0,0);
+        doc.setText
+        doc.text("Penting!", 20, yPos);
+        yPos += 5;
+        doc.text("Surat pernyataan ini tidak berlaku untuk pembatalan yang diakibatkan oleh kelalaian atau kesalahan pribadi", 20, yPos);
+
+
 
 
 
