@@ -355,6 +355,8 @@ $(document).ready(function() {
             console.log('fungsi ini jalann')
             all_form_field.style.display = 'block';
             if (kategori <= 2){
+                $('#id_metode').find('[value="2"]').show();
+                    $('#id_metode').find('[value="3"]').show();
                 informasi_lampiran.style.display = 'block';
                 informasi_perpajakan.style.display = 'block';
                 tata_cara.style.display = 'block';
@@ -773,8 +775,12 @@ $(document).ready(function() {
                         placeholder: "Pilih",
                         allowClear: true
                     });
+                    $('#id_metode option[value="2"').hide();
+                    $('#id_metode option[value="3"').hide();
                 }else{
                     document.getElementById('informasi_vendor_tambahan').innerHTML = "";
+                    $('#id_metode').find('[value="2"]').show();
+                    $('#id_metode').find('[value="3"]').show();
                 }
 
             }
