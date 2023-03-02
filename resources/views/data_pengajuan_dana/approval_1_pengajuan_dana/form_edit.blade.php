@@ -271,7 +271,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label" for="ktp">Faktur Pajak Internal</label>
+                            <label class="col-sm-4 col-form-label" for="ktp">Bukti Potong</label>
                             <div class="col-sm-8">
                                 <p id="no_file_fp_internal">Tidak Ada</p>
                                 <a id="file_fp_internal_field" href="#" target="_blank"

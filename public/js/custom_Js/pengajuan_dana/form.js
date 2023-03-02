@@ -342,7 +342,7 @@ $(document).ready(function() {
         $('.info_jenis_vendor').remove()
         $("#id_metode").val('').trigger('change')
         document.getElementById('detail_metode_field').innerHTML = '';
-        // document.getElementById('informasi_detail_refund').innerHTML = '';
+        document.getElementById('informasi_detail_refund').style.display = 'none';
 
         let tata_cara = document.getElementById('tata_cara');
         // let pajak_field = document.getElementById('pajak_field');
@@ -353,6 +353,14 @@ $(document).ready(function() {
         let informasi_detail_refund = document.getElementById('informasi_detail_refund');
         let all_form_field = document.getElementById('all_form_field');
         let kategori = $('#id_kategori').val();
+
+
+        $('#no_invoice').attr('required', false);
+        $('#no_retur').attr('required', false);
+        $('#alasan_refund').attr('required', false);
+        $('#no_inv_pengganti').attr('required', false);
+        $('#pilihan_cashback').attr('required', false);
+        $('#barcode_barang').attr('required', false);
 
         if (kategori != ''){
             console.log('fungsi ini jalann')
@@ -500,6 +508,7 @@ $(document).ready(function() {
                     }
                 }
                 function set_checkbox_pajak_2(kondisi){
+                    console.log('set checkbox 2 jalan')
                     var info_jenis_vendor =     '<div class="form-group row info_jenis_vendor" id="info_jenis_vendor">'+
                                                     '<label class="col-sm-4 col-form-label" for="jenis_vendor">Kategori Vendor</label>'+
                                                     '<div class="col-sm-8">'+
@@ -758,6 +767,42 @@ $(document).ready(function() {
                 informasi_lampiran.style.display = 'none';
                 tata_cara.style.display = 'none';
                 if(kategori == 4){
+
+
+
+                    var select_jenis_pajak =    '<div class="form-group row">'+
+                                                    '<label class="col-sm-4 col-form-label" for="jenis_pajak">Jenis Pajak</label>'+
+                                                    '<div class="col-sm-8">'+
+                                                        '<select name="jenis_pajak" id="jenis_pajak" required="reuqired" class="form-control form-control-sm select2" data-select2-id="22">'+
+                                                            '<option value="">Pilih</option>'+
+                                                            '<option value="PPN">PPN</option>'+
+                                                            '<option value="PPh 21">PPh 21</option>'+
+                                                            '<option value="PPh 23">PPh 23</option>'+
+                                                            '<option value="PPh 4 Ayat 2">PPh 4 Ayat 2</option>'+
+                                                            '<option value="PPh 25">PPh 25</option>'+
+                                                            '<option value="PPh Tahunan Badan">PPh Tahunan Badan</option>'+
+                                                            '<option value="Denda Pajak">Denda Pajak</option>'+
+                                                        '</select>'+
+                                                    '</div>'+
+                                                '</div>';
+                    document.getElementById('informasi_vendor_tambahan').innerHTML = select_jenis_pajak;
+                    $('#jenis_pajak').select2({
+                        placeholder: "Pilih",
+                        allowClear: true
+                    });
+                    $('#id_metode option[value="2"').hide();
+                    $('#id_metode option[value="3"').hide();
+                }else{
+                    document.getElementById('informasi_vendor_tambahan').innerHTML = "";
+                    $('#id_metode').find('[value="2"]').show();
+                    $('#id_metode').find('[value="3"]').show();
+
+                    $('#no_invoice').attr('required', true);
+                    $('#no_retur').attr('required', true);
+                    $('#alasan_refund').attr('required', true);
+                    $('#no_inv_pengganti').attr('required', true);
+                    $('#pilihan_cashback').attr('required', true);
+                    $('#barcode_barang').attr('required', true);
                     var detail_refund_field =   '<label>'+
                                                     '<h6>Informasi Detail Refund</h6>'+
                                                 '</label>'+
@@ -808,33 +853,8 @@ $(document).ready(function() {
                                                     '</div>'+
                                                 '</div>';
                     // informasi_detail_refund.innerHTML = detail_refund_field;
-                    informasi_detail_refund.style.display = 'block';
-                    var select_jenis_pajak =    '<div class="form-group row">'+
-                                                    '<label class="col-sm-4 col-form-label" for="jenis_pajak">Jenis Pajak</label>'+
-                                                    '<div class="col-sm-8">'+
-                                                        '<select name="jenis_pajak" id="jenis_pajak" required="reuqired" class="form-control form-control-sm select2" data-select2-id="22">'+
-                                                            '<option value="">Pilih</option>'+
-                                                            '<option value="PPN">PPN</option>'+
-                                                            '<option value="PPh 21">PPh 21</option>'+
-                                                            '<option value="PPh 23">PPh 23</option>'+
-                                                            '<option value="PPh 4 Ayat 2">PPh 4 Ayat 2</option>'+
-                                                            '<option value="PPh 25">PPh 25</option>'+
-                                                            '<option value="PPh Tahunan Badan">PPh Tahunan Badan</option>'+
-                                                            '<option value="Denda Pajak">Denda Pajak</option>'+
-                                                        '</select>'+
-                                                    '</div>'+
-                                                '</div>';
-                    document.getElementById('informasi_vendor_tambahan').innerHTML = select_jenis_pajak;
-                    $('#jenis_pajak').select2({
-                        placeholder: "Pilih",
-                        allowClear: true
-                    });
-                    $('#id_metode option[value="2"').hide();
-                    $('#id_metode option[value="3"').hide();
-                }else{
-                    document.getElementById('informasi_vendor_tambahan').innerHTML = "";
-                    $('#id_metode').find('[value="2"]').show();
-                    $('#id_metode').find('[value="3"]').show();
+                    informasi_detail_refund.style.display = '';
+
                 }
 
             }

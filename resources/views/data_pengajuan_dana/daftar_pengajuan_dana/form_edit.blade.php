@@ -167,6 +167,9 @@
                     <h6>Informasi Pembayaran</h6>
                 </label>
                 <div class="col-md-6">
+                    <div id="informasi_vendor_tambahan">
+
+                    </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label" for="tgl_pengajuan">Tgl. Pengajuan</label>
                         <div class="col-sm-8">
@@ -201,6 +204,8 @@
                 </div>
 
             </div>
+
+
             <div class="card-body text-secondary" id="informasi_lampiran" style="display:none">
                 <div class="d-flex justify-content-between align-items-center mb-1">
                     <label>
@@ -271,7 +276,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label" for="ktp">Faktur Pajak Internal</label>
+                            <label class="col-sm-4 col-form-label" for="ktp">Bukti Potong</label>
                             <div class="col-sm-8">
                                 <p id="no_file_fp_internal">Tidak Ada</p>
                                 <a id="file_fp_internal_field" href="#" target="_blank"
@@ -301,7 +306,7 @@
                 <div id="lampiran_lain_field" style="display:none;">
                 </div>
             </div>
-            <div class="card-body text-secondary row" id="informasi_pembayaran">
+            <div class="card-body text-secondary row" id="informasi_status">
                 <label>
                     <h6>Informasi Status</h6>
                 </label>
@@ -332,8 +337,62 @@
                 </div>
 
             </div>
+
+            <div class="card-body text-secondary row" id="informasi_detail_refund" style="display:none;">
+                <label>
+                    <h6>Informasi Detail Refund</h6>
+                </label>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label" for="no_invoice">No. Invoice</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="no_invoice" id="no_invoice" class="form-control form-control-sm"
+                                required="reuqired">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label" for="no_retur">No. Retur</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="no_retur" id="no_retur" class="form-control form-control-sm"
+                                required="reuqired">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label" for="alasan_refund">Alasan Refund</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="alasan_refund" id="alasan_refund"
+                                class="form-control form-control-sm" required="reuqired">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label" for="no_inv_pengganti">No. Inv Pengganti</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="no_inv_pengganti" id="no_inv_pengganti"
+                                class="form-control form-control-sm" required="reuqired">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label" for="pilihan_cashback">Pilihan Cashback</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="pilihan_cashback" id="pilihan_cashback"
+                                class="form-control form-control-sm" required="reuqired">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label" for="barcode_barang">Barcode Barang</label>
+                        <div class="col-sm-8">
+                            <textarea rows="3" type="text" name="barcode_barang" id="barcode_barang"
+                                style="height: 4.875rem;" class="form-control form-control-sm" required="reuqired"
+                                value=""></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
             <div id="" class="form-group text-right">
-                {!! Form::submit('Simpan', ['class'=>'btn btn-sm btn-secondary text-white']) !!}
+                <!-- {!! Form::submit('Simpan', ['class'=>'btn btn-sm btn-secondary text-white']) !!} -->
                 <!-- <button type="button" id="btn-edit" class="btn btn-sm btn-light text-secondary">Edit</button>
                 <button type="submit" class="btn btn-sm btn-secondary text-white">Simpan</button> -->
 

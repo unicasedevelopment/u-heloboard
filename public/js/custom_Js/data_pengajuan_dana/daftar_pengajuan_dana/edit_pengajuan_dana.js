@@ -324,6 +324,14 @@ $(document).ready(function() {
         let informasi_lampiran = document.getElementById('informasi_lampiran');
         let all_form_field = document.getElementById('all_form_field');
         let kategori = $('#id_kategori').val();
+
+        $('#no_invoice').attr('required', false);
+        $('#no_retur').attr('required', false);
+        $('#alasan_refund').attr('required', false);
+        $('#no_inv_pengganti').attr('required', false);
+        $('#pilihan_cashback').attr('required', false);
+        $('#barcode_barang').attr('required', false);
+
         if (kategori != ''){
             all_form_field.style.display = 'block';
             if (kategori <= 2){
@@ -404,6 +412,17 @@ $(document).ready(function() {
                 }else{
                     pajak_field_1.style.display = 'contents';
                     pajak_field_2.style.display = 'none';
+                    var info_jenis_vendor =     '<div class="form-group row info_jenis_vendor" id="info_jenis_vendor">'+
+                                                    '<label class="col-sm-4 col-form-label" for="jenis_vendor">Kategori Vendor</label>'+
+                                                    '<div class="col-sm-8">'+
+                                                        '<select name="jenis_vendor" id="jenis_vendor" required="reuqired" disabled class="form-control form-control-sm select2" data-select2-id="21">'+
+                                                            '<option value="">Pilih</option>'+
+                                                            '<option value="ekspedisi">Ekspedisi</option>'+
+                                                            '<option value="nonekspedisi">Non Ekspedisi</option>'+
+                                                        '</select>'+
+                                                    '</div>'+
+                                                '</div>';
+                    document.getElementById('informasi_vendor_tambahan').innerHTML = info_jenis_vendor;
                 }
 
             }else{
@@ -411,6 +430,10 @@ $(document).ready(function() {
                 informasi_perpajakan.style.display = 'none';
                 informasi_lampiran.style.display = 'none';
                 // tata_cara.style.display = 'none';
+
+                if(id_kategori == 4){
+
+                }
             }
         }else{
             all_form_field.style.display = 'none';
@@ -425,6 +448,571 @@ $(document).ready(function() {
             })
         }
     });
+
+    // $('#id_kategori').on('change', function() {
+    //     $('.checkbox_pajak').prop('checked', false)
+    //     console.log('fungsi id_kategori jalan')
+    //     $('.info_jenis_vendor').remove()
+    //     $("#id_metode").val('').trigger('change')
+    //     document.getElementById('detail_metode_field').innerHTML = '';
+    //     document.getElementById('informasi_detail_refund').style.display = 'none';
+
+    //     let tata_cara = document.getElementById('tata_cara');
+    //     // let pajak_field = document.getElementById('pajak_field');
+    //     let pajak_field_1 = document.getElementById('pajak_field_1');
+    //     let pajak_field_2 = document.getElementById('pajak_field_2');
+    //     let informasi_perpajakan = document.getElementById('informasi_perpajakan');
+    //     let informasi_lampiran = document.getElementById('informasi_lampiran');
+    //     let informasi_detail_refund = document.getElementById('informasi_detail_refund');
+    //     let all_form_field = document.getElementById('all_form_field');
+    //     let kategori = $('#id_kategori').val();
+
+
+    //     $('#no_invoice').attr('required', false);
+    //     $('#no_retur').attr('required', false);
+    //     $('#alasan_refund').attr('required', false);
+    //     $('#no_inv_pengganti').attr('required', false);
+    //     $('#pilihan_cashback').attr('required', false);
+    //     $('#barcode_barang').attr('required', false);
+
+    //     if (kategori != ''){
+    //         console.log('fungsi ini jalann')
+    //         all_form_field.style.display = 'block';
+    //         if (kategori <= 2){
+    //             $('#id_metode').find('[value="2"]').show();
+    //                 $('#id_metode').find('[value="3"]').show();
+    //             informasi_lampiran.style.display = 'block';
+    //             informasi_perpajakan.style.display = 'block';
+    //             // tata_cara.style.display = 'block';
+
+    //             $('#id_metode').attr('disabled', false);
+    //             if(kategori == 1){
+    //                 $('#id_metode').attr('disabled', true);
+    //                 $('.checkbox_pajak').attr('required', true);
+    //                 $('#checkbox_pajak').attr('required', false);
+
+    //                 // var info_jenis_vendor =     '<div class="form-group row info_jenis_vendor" id="info_jenis_vendor">'+
+    //                 //                                 '<label class="col-sm-4 col-form-label" for="jenis_vendor">Kategori Vendor</label>'+
+    //                 //                                 '<div class="col-sm-8">'+
+    //                 //                                     '<select name="jenis_vendor" id="jenis_vendor" required="reuqired" disabled class="form-control form-control-sm select2" data-select2-id="21">'+
+    //                 //                                         '<option value="">Pilih</option>'+
+    //                 //                                         '<option value="ekspedisi">Ekspedisi</option>'+
+    //                 //                                         '<option value="nonekspedisi">Non Ekspedisi</option>'+
+    //                 //                                     '</select>'+
+    //                 //                                 '</div>'+
+    //                 //                             '</div>';
+
+    //                 // var info_jenis_vendor =     '<div class="form-group row info_jenis_vendor" id="info_jenis_vendor">'+
+    //                 //     '<label class="col-sm-4 col-form-label" for="jenis_vendor">Kategori Vendor</label>'+
+    //                 //     '<div class="col-sm-8">'+
+    //                 //         '<select name="jenis_vendor" id="jenis_vendor" required="reuqired" disabled class="form-control form-control-sm select2" data-select2-id="21">'+
+    //                 //             '<option value="">Pilih</option>'+
+    //                 //             '<option value="ekspedisi">Ekspedisi</option>'+
+    //                 //             '<option value="nonekspedisi">Non Ekspedisi</option>'+
+    //                 //         '</select>'+
+    //                 //     '</div>'+
+    //                 // '</div>';
+    //                 document.getElementById('informasi_vendor_tambahan').innerHTML = info_jenis_vendor;
+    //             }else{
+    //                 $('.checkbox_pajak').attr('required', false);
+    //             }
+
+    //             // document.getElementById('pajak_field').innerHTML=pajak_field_2
+
+    //             $('#status_pajak_2').on('change', function(){
+    //                 if($('#checkbox_pajak_2').prop('checked') == true){
+    //                     $("#jenis_vendor").val('').trigger('change')
+    //                     if($('#status_pajak_2').val() != ''){
+    //                         $('#jenis_vendor').attr('disabled',false);
+    //                         $('#jenis_vendor').on('change',function(){
+
+    //                             $("#id_metode").val('').trigger('change')
+
+    //                             if($('#jenis_vendor').val() == ''){
+    //                                 $('#id_metode').attr('disabled',true);
+    //                             }else{
+    //                                 $('#id_metode').attr('disabled',false);
+    //                             }
+    //                         });
+
+    //                     }else{
+    //                         $('#jenis_vendor').attr('disabled',true);
+    //                         // $('#jenis_vendor').attr('disabled',true);
+    //                         // $('#id_metode').attr('disabled',true);
+    //                     }
+    //                 }
+    //             })
+    //             $('#status_pajak_3').on('change', function(){
+    //                 console.log('jalan')
+    //                 if($('#checkbox_pajak_3').prop('checked') == true){
+    //                     $("#id_metode").val('').trigger('change')
+    //                     if($('#status_pajak_3').val() != ''){
+    //                         console.log('jalan')
+    //                         $('#id_metode').attr('disabled',false);
+    //                     }else{
+    //                         $('#id_metode').attr('disabled',true);
+    //                     }
+    //                 }
+    //             })
+    //             $('#status_pajak_4').on('change', function(){
+    //                 console.log('jalan')
+    //                 if($('#checkbox_pajak_4').prop('checked') == true){
+
+    //                     $("#id_metode").val('').trigger('change')
+
+    //                     if($('#status_pajak_4').val() != ''){
+    //                         console.log('jalan')
+    //                         $('#id_metode').attr('disabled',false);
+    //                     }else{
+    //                         $('#id_metode').attr('disabled',true);
+    //                     }
+    //                 }
+    //             })
+    //             $('#status_pajak_5').on('change', function(){
+    //                 console.log('jalan')
+    //                 if($('#checkbox_pajak_5').prop('checked') == true){
+
+    //                     $("#id_metode").val('').trigger('change')
+
+    //                     if($('#status_pajak_5').val() != ''){
+    //                         console.log('jalan')
+    //                         $('#id_metode').attr('disabled',false);
+    //                     }else{
+    //                         $('#id_metode').attr('disabled',true);
+    //                     }
+    //                 }
+    //             })
+    //             $('#status_pajak_6').on('change', function(){
+    //                 if($('#checkbox_pajak_6').prop('checked') == true){
+    //                     $("#jenis_vendor").val('').trigger('change')
+    //                     if($('#status_pajak_6').val() != ''){
+    //                         $('#jenis_vendor').attr('disabled',false);
+
+    //                         $('#jenis_vendor').on('change',function(){
+
+    //                             $("#id_metode").val('').trigger('change')
+    //                             if($('#jenis_vendor').val() == ''){
+    //                                 $('#id_metode').attr('disabled',true);
+    //                             }else{
+    //                                 $('#id_metode').attr('disabled',false);
+    //                             }
+    //                         });
+
+    //                     }else{
+
+    //                         $('#jenis_vendor').attr('disabled',true);
+    //                         // $('#jenis_vendor').attr('disabled',true);
+    //                         // $('#id_metode').attr('disabled',true);
+    //                     }
+    //                 }
+    //             })
+
+
+    //             // const checkbox_pajak = document.getElementById('checkbox_pajak');
+    //             // const checkbox_pajak_1 = document.getElementById('checkbox_pajak_1');
+    //             // const checkbox_pajak_2 = document.getElementById('checkbox_pajak_2');
+    //             // const checkbox_pajak_3 = document.getElementById('checkbox_pajak_3');
+    //             // const checkbox_pajak_4 = document.getElementById('checkbox_pajak_4');
+    //             // const checkbox_pajak_5 = document.getElementById('checkbox_pajak_5');
+    //             // const checkbox_pajak_6 = document.getElementById('checkbox_pajak_6');
+
+    //             function reset_nominal(){
+    //                 if($('#nominal_trf').val() != undefined ){
+    //                     if($('#nominal_trf').val() != ''){
+    //                         $('#nominal_trf').val('');
+    //                     }
+    //                 }
+    //                 if($('#nominal_inv').val() != undefined ){
+    //                     if($('#nominal_inv').val() != ''){
+    //                         $('#nominal_inv').val('');
+    //                     }
+    //                 }
+    //             }
+
+    //             function set_checkbox_pajak_1(kondisi){
+    //                 if(kondisi == true){
+    //                     $('#checkbox_pajak_3').attr('disabled',true);
+    //                     $('#checkbox_pajak_4').attr('disabled',true);
+    //                     $('#checkbox_pajak_5').attr('disabled',true);
+
+    //                 }else{
+    //                     if ($('#checkbox_pajak_2').prop('checked') == false && $('#checkbox_pajak_6').prop('checked') == false){
+    //                         $('#checkbox_pajak_3').attr('disabled',false);
+    //                         $('#checkbox_pajak_4').attr('disabled',false);
+    //                         $('#checkbox_pajak_5').attr('disabled',false);
+    //                     }
+    //                 }
+    //             }
+    //             function set_checkbox_pajak_2(kondisi){
+    //                 var info_jenis_vendor =     '<div class="form-group row info_jenis_vendor" id="info_jenis_vendor">'+
+    //                                                 '<label class="col-sm-4 col-form-label" for="jenis_vendor">Kategori Vendor</label>'+
+    //                                                 '<div class="col-sm-8">'+
+    //                                                     '<select name="jenis_vendor" id="jenis_vendor" required="reuqired" disabled class="form-control form-control-sm select2" data-select2-id="21">'+
+    //                                                         '<option value="">Pilih</option>'+
+    //                                                         '<option value="ekspedisi">Ekspedisi</option>'+
+    //                                                         '<option value="nonekspedisi">Non Ekspedisi</option>'+
+    //                                                     '</select>'+
+    //                                                 '</div>'+
+    //                                             '</div>';
+
+
+
+    //                 if(kondisi == true){
+    //                     console.log('jenis vendor  ditambahkan')
+    //                     console.log(info_jenis_vendor)
+    //                     document.getElementById('informasi_vendor_tambahan').innerHTML = info_jenis_vendor;
+    //                     $('#jenis_vendor').select2({
+    //                         placeholder: "Pilih",
+    //                         allowClear: true
+    //                     });
+    //                     $('#checkbox_pajak_3').attr('disabled',true);
+    //                     $('#checkbox_pajak_4').attr('disabled',true);
+    //                     $('#checkbox_pajak_5').attr('disabled',true);
+    //                     $('#checkbox_pajak_6').attr('disabled',true);
+    //                 }else{
+    //                     $('.info_jenis_vendor').remove()
+    //                     if ($('#checkbox_pajak_1').prop('checked') == false){
+    //                         $('#checkbox_pajak_3').attr('disabled',false);
+    //                         $('#checkbox_pajak_4').attr('disabled',false);
+    //                         $('#checkbox_pajak_5').attr('disabled',false);
+    //                         $('#checkbox_pajak_6').attr('disabled',false);
+    //                     }else{
+    //                         $('#checkbox_pajak_6').attr('disabled',false);
+    //                     }
+    //                 }
+    //             }
+    //             function set_checkbox_pajak_3(kondisi){
+    //                 if(kondisi == true){
+    //                     $('#checkbox_pajak_1').attr('disabled',true);
+    //                     $('#checkbox_pajak_2').attr('disabled',true);
+    //                     $('#checkbox_pajak_4').attr('disabled',true);
+    //                     $('#checkbox_pajak_5').attr('disabled',true);
+    //                     $('#checkbox_pajak_6').attr('disabled',true);
+    //                 }else{
+    //                     $('#checkbox_pajak_1').attr('disabled',false);
+    //                     $('#checkbox_pajak_2').attr('disabled',false);
+    //                     $('#checkbox_pajak_4').attr('disabled',false);
+    //                     $('#checkbox_pajak_5').attr('disabled',false);
+    //                     $('#checkbox_pajak_6').attr('disabled',false);
+    //                 }
+    //             }
+    //             function set_checkbox_pajak_4(kondisi){
+    //                 if(kondisi == true){
+    //                     $('#checkbox_pajak_1').attr('disabled',true);
+    //                     $('#checkbox_pajak_2').attr('disabled',true);
+    //                     $('#checkbox_pajak_3').attr('disabled',true);
+    //                     $('#checkbox_pajak_5').attr('disabled',true);
+    //                     $('#checkbox_pajak_6').attr('disabled',true);
+    //                 }else{
+    //                     $('#checkbox_pajak_1').attr('disabled',false);
+    //                     $('#checkbox_pajak_2').attr('disabled',false);
+    //                     $('#checkbox_pajak_3').attr('disabled',false);
+    //                     $('#checkbox_pajak_5').attr('disabled',false);
+    //                     $('#checkbox_pajak_6').attr('disabled',false);
+    //                 }
+    //             }
+    //             function set_checkbox_pajak_5(kondisi){
+    //                 if(kondisi == true){
+    //                     $('#checkbox_pajak_1').attr('disabled',true);
+    //                     $('#checkbox_pajak_2').attr('disabled',true);
+    //                     $('#checkbox_pajak_3').attr('disabled',true);
+    //                     $('#checkbox_pajak_4').attr('disabled',true);
+    //                     $('#checkbox_pajak_6').attr('disabled',true);
+    //                 }else{
+    //                     $('#checkbox_pajak_1').attr('disabled',false);
+    //                     $('#checkbox_pajak_2').attr('disabled',false);
+    //                     $('#checkbox_pajak_3').attr('disabled',false);
+    //                     $('#checkbox_pajak_4').attr('disabled',false);
+    //                     $('#checkbox_pajak_6').attr('disabled',false);
+    //                 }
+    //             }
+    //             function set_checkbox_pajak_6(kondisi){
+    //                 var info_jenis_vendor_pp23 =   '<div class="form-group row info_jenis_vendor" id="info_jenis_vendor">'+
+    //                                                 '<label class="col-sm-4 col-form-label" for="jenis_vendor">Kategori Vendor</label>'+
+    //                                                 '<div class="col-sm-8">'+
+    //                                                     '<select name="jenis_vendor" id="jenis_vendor" required="reuqired" disabled class="form-control form-control-sm select2" data-select2-id="21">'+
+    //                                                         '<option value="">Pilih</option>'+
+    //                                                         '<option value="reguler">Reguler</option>'+
+    //                                                         '<option value="pp23">PP 23 2018</option>'+
+    //                                                     '</select>'+
+    //                                                 '</div>'+
+    //                                             '</div>';
+    //                 if(kondisi == true){
+    //                     document.getElementById('informasi_vendor_tambahan').innerHTML = info_jenis_vendor_pp23;
+    //                     $('#jenis_vendor').select2({
+    //                         placeholder: "Pilih",
+    //                         allowClear: true
+    //                     });
+    //                     $('#checkbox_pajak_2').attr('disabled',true);
+    //                     $('#checkbox_pajak_3').attr('disabled',true);
+    //                     $('#checkbox_pajak_4').attr('disabled',true);
+    //                     $('#checkbox_pajak_5').attr('disabled',true);
+    //                 }else{
+    //                     $('.info_jenis_vendor').remove()
+    //                     if ($('#checkbox_pajak_1').prop('checked') == false){
+    //                         $('#checkbox_pajak_3').attr('disabled',false);
+    //                         $('#checkbox_pajak_4').attr('disabled',false);
+    //                         $('#checkbox_pajak_5').attr('disabled',false);
+    //                         $('#checkbox_pajak_2').attr('disabled',false);
+    //                     }else{
+    //                         $('#checkbox_pajak_2').attr('disabled',false);
+    //                     }
+    //                 }
+    //             }
+
+    //             $('#checkbox_pajak').on('change', function(){
+    //                 reset_nominal();
+    //                 if($("#id_metode").val() != ''){
+    //                     $("#id_metode").val('').trigger('change')
+    //                 }
+    //                 // if (checkbox_pajak_1.checked){
+    //                 //     set_checkbox_pajak_1(true)
+    //                 // }else{
+    //                 //     set_checkbox_pajak_1(false)
+    //                 // }
+    //             })
+    //             $('#checkbox_pajak_1').on('change', function(){
+    //                 reset_nominal();
+    //                 if($("#id_metode").val() != ''){
+    //                     $("#id_metode").val('').trigger('change')
+    //                 }
+    //                 if (checkbox_pajak_1.checked){
+    //                     set_checkbox_pajak_1(true)
+    //                 }else{
+    //                     set_checkbox_pajak_1(false)
+    //                 }
+    //             })
+    //             $('#checkbox_pajak_2').on('change', function(){
+    //                 console.log('checkbox 2 diganti')
+    //                 $('#id_metode').attr('disabled',true);
+    //                 reset_nominal();
+    //                 if($("#id_metode").val() != ''){
+    //                     $("#id_metode").val('').trigger('change')
+    //                 }
+    //                 if (checkbox_pajak_2.checked){
+    //                     console.log('checkbox checked')
+    //                     document.getElementById('status_pajak_2').removeAttribute('disabled');
+    //                     document.getElementById('status_pajak_2').setAttribute('required',true);
+    //                     set_checkbox_pajak_2(true)
+    //                 }else{
+    //                     console.log('checkbox unchecked')
+    //                     document.getElementById('status_pajak_2').setAttribute('disabled',true);
+    //                     $('#status_pajak_2').val("").trigger('change');
+    //                     set_checkbox_pajak_2(false)
+    //                 }
+
+
+    //             })
+    //             $('#checkbox_pajak_3').on('change', function(){
+    //                 $('#id_metode').attr('disabled',true);
+    //                 reset_nominal();
+    //                 if($("#id_metode").val() != ''){
+    //                     $("#id_metode").val('').trigger('change')
+    //                 }
+    //                 if (checkbox_pajak_3.checked){
+    //                     document.getElementById('status_pajak_3').removeAttribute('disabled');
+    //                     document.getElementById('status_pajak_3').setAttribute('required',true);
+    //                     set_checkbox_pajak_3(true)
+    //                 }else{
+    //                     document.getElementById('status_pajak_3').setAttribute('disabled',true);
+    //                     $('#status_pajak_3').val("").trigger('change');
+    //                     set_checkbox_pajak_3(false)
+    //                 }
+    //             })
+    //             $('#checkbox_pajak_4').on('change', function(){
+    //                 $('#id_metode').attr('disabled',true);
+    //                 reset_nominal();
+    //                 if($("#id_metode").val() != ''){
+    //                     $("#id_metode").val('').trigger('change')
+    //                 }
+    //                 if (checkbox_pajak_4.checked){
+    //                     document.getElementById('status_pajak_4').removeAttribute('disabled');
+    //                     document.getElementById('status_pajak_4').setAttribute('required',true);
+    //                     set_checkbox_pajak_4(true)
+    //                 }else{
+    //                     document.getElementById('status_pajak_4').setAttribute('disabled',true);
+    //                     $('#status_pajak_4').val("").trigger('change');
+    //                     set_checkbox_pajak_4(false)
+    //                 }
+    //             })
+    //             $('#checkbox_pajak_5').on('change', function(){
+    //                 $('#id_metode').attr('disabled',true);
+    //                 reset_nominal();
+    //                 if($("#id_metode").val() != ''){
+    //                     $("#id_metode").val('').trigger('change')
+    //                 }
+    //                 if (checkbox_pajak_5.checked){
+    //                     document.getElementById('status_pajak_5').removeAttribute('disabled');
+    //                     document.getElementById('status_pajak_5').setAttribute('required',true);
+    //                     set_checkbox_pajak_5(true)
+    //                 }else{
+    //                     document.getElementById('status_pajak_5').setAttribute('disabled',true);
+    //                     $('#status_pajak_5').val("").trigger('change');
+    //                     set_checkbox_pajak_5(false)
+    //                 }
+    //             })
+    //             $('#checkbox_pajak_6').on('change', function(){
+    //                 console.log('checkbox 6 diganti')
+    //                 $('#id_metode').attr('disabled',true);
+    //                 reset_nominal();
+    //                 if($("#id_metode").val() != ''){
+    //                     $("#id_metode").val('').trigger('change')
+    //                 }
+    //                 if (checkbox_pajak_6.checked){
+    //                     document.getElementById('status_pajak_6').removeAttribute('disabled');
+    //                     document.getElementById('status_pajak_6').setAttribute('required',true);
+    //                     set_checkbox_pajak_6(true)
+    //                 }else{
+    //                     document.getElementById('status_pajak_6').setAttribute('disabled',true);
+    //                     $('#status_pajak_6').val("").trigger('change');
+    //                     set_checkbox_pajak_6(false)
+    //                 }
+    //             })
+
+    //             if(kategori != 1){
+    //                 pajak_field_1.style.display = 'none';
+    //                 pajak_field_2.style.display = 'contents';
+    //             }else{
+    //                 pajak_field_1.style.display = 'contents';
+    //                 pajak_field_2.style.display = 'none';
+    //             }
+
+    //             var nik = document.getElementById("nik");
+    //             var npwp = document.getElementById("npwp");
+
+    //             if(nik){
+    //                 nik.addEventListener("input", function(e) {
+    //                     $(this).val($(this).val().replace(/[^0-9]/g, ''));
+
+    //                 });
+    //             }
+
+    //             if(npwp){
+    //                 npwp.addEventListener("input", function(e) {
+
+    //                     $(this).val($(this).val().replace(/[^0-9]/g, ''));
+    //                 });
+    //             }
+
+    //         }else{
+    //             $('.checkbox_pajak').attr('required', false);
+    //             $('#id_metode').attr('disabled', false);
+    //             all_form_field.style.display = 'block';
+    //             informasi_perpajakan.style.display = 'none';
+    //             informasi_lampiran.style.display = 'none';
+    //             // tata_cara.style.display = 'none';
+    //             if(kategori == 4){
+    //                 console.log('ini jalan')
+    //                 var select_jenis_pajak =    '<div class="form-group row">'+
+    //                                                 '<label class="col-sm-4 col-form-label" for="jenis_pajak">Jenis Pajak</label>'+
+    //                                                 '<div class="col-sm-8">'+
+    //                                                     '<select name="jenis_pajak" id="jenis_pajak" required="reuqired" class="form-control form-control-sm select2" data-select2-id="22">'+
+    //                                                         '<option value="">Pilih</option>'+
+    //                                                         '<option value="PPN">PPN</option>'+
+    //                                                         '<option value="PPh 21">PPh 21</option>'+
+    //                                                         '<option value="PPh 23">PPh 23</option>'+
+    //                                                         '<option value="PPh 4 Ayat 2">PPh 4 Ayat 2</option>'+
+    //                                                         '<option value="PPh 25">PPh 25</option>'+
+    //                                                         '<option value="PPh Tahunan Badan">PPh Tahunan Badan</option>'+
+    //                                                         '<option value="Denda Pajak">Denda Pajak</option>'+
+    //                                                     '</select>'+
+    //                                                 '</div>'+
+    //                                             '</div>';
+    //                 document.getElementById('informasi_vendor_tambahan').innerHTML = select_jenis_pajak;
+    //                 $('#jenis_pajak').select2({
+    //                     placeholder: "Pilih",
+    //                     allowClear: true
+    //                 });
+    //                 $('#id_metode option[value="2"').hide();
+    //                 $('#id_metode option[value="3"').hide();
+    //             }else{
+    //                 document.getElementById('informasi_vendor_tambahan').innerHTML = "";
+    //                 $('#id_metode').find('[value="2"]').show();
+    //                 $('#id_metode').find('[value="3"]').show();
+
+    //                 $('#no_invoice').attr('required', true);
+    //                 $('#no_retur').attr('required', true);
+    //                 $('#alasan_refund').attr('required', true);
+    //                 $('#no_inv_pengganti').attr('required', true);
+    //                 $('#pilihan_cashback').attr('required', true);
+    //                 $('#barcode_barang').attr('required', true);
+    //                 var detail_refund_field =   '<label>'+
+    //                                                 '<h6>Informasi Detail Refund</h6>'+
+    //                                             '</label>'+
+    //                                             '<div class="col-md-6">'+
+    //                                                 '<div class="form-group row">'+
+    //                                                     '<label class="col-sm-4 col-form-label" for="no_inv">No. Invoice</label>'+
+    //                                                     '<div class="col-sm-8">'+
+    //                                                         '<input type="text" name="no_inv" id="no_inv" class="form-control form-control-sm">'+
+    //                                                     '</div>'+
+    //                                                 '</div>'+
+    //                                                 '<div class="form-group row">'+
+    //                                                     '<label class="col-sm-4 col-form-label" for="no_retur">No. Retur</label>'+
+    //                                                     '<div class="col-sm-8">'+
+    //                                                         '<input type="text" name="no_retur" id="no_retur"'+
+    //                                                             'class="form-control form-control-sm">'+
+    //                                                     '</div>'+
+    //                                                 '</div>'+
+    //                                                 '<div class="form-group row">'+
+    //                                                     '<label class="col-sm-4 col-form-label" for="alasan_refund">Alasan Refund</label>'+
+    //                                                     '<div class="col-sm-8">'+
+    //                                                         '<input type="text" name="alasan_refund" id="alasan_refund"'+
+    //                                                             'class="form-control form-control-sm">'+
+    //                                                     '</div>'+
+    //                                                 '</div>'+
+    //                                                 '<div class="form-group row">'+
+    //                                                     '<label class="col-sm-4 col-form-label" for="no_inv_pengganti">No. Inv Pengganti</label>'+
+    //                                                     '<div class="col-sm-8">'+
+    //                                                         '<input type="text" name="no_inv_pengganti" id="no_inv_pengganti"'+
+    //                                                             'class="form-control form-control-sm">'+
+    //                                                     '</div>'+
+    //                                                 '</div>'+
+    //                                             '</div>'+
+    //                                             '<div class="col-md-6">'+
+    //                                                 '<div class="form-group row">'+
+    //                                                     '<label class="col-sm-4 col-form-label" for="pilihan_cashback">Pilihan Cashback</label>'+
+    //                                                     '<div class="col-sm-8">'+
+    //                                                         '<input type="text" name="pilihan_cashback" id="pilihan_cashback"'+
+    //                                                             'class="form-control form-control-sm">'+
+    //                                                     '</div>'+
+    //                                                 '</div>'+
+    //                                                 '<div class="form-group row">'+
+    //                                                     '<label class="col-sm-4 col-form-label" for="barcode_barang">Barcode Barang</label>'+
+    //                                                     '<div class="col-sm-8">'+
+    //                                                         '<textarea rows="3" type="text" name="barcode_barang" id="barcode_barang"'+
+    //                                                             'style="height: 4.875rem;" class="form-control form-control-sm"'+
+    //                                                             'required="reuqired" value=""></textarea>'+
+    //                                                     '</div>'+
+    //                                                 '</div>'+
+    //                                             '</div>';
+    //                 // informasi_detail_refund.innerHTML = detail_refund_field;
+    //                 informasi_detail_refund.style.display = '';
+
+    //             }
+
+    //         }
+    //     }else{
+    //         all_form_field.style.display = 'none';
+    //         informasi_perpajakan.style.display = 'none';
+    //         informasi_lampiran.style.display = 'none';
+    //         // tata_cara.style.display = 'none';
+    //         swal({
+    //             title: "Generate Form Gagal",
+    //             text: "Pastikan Anda Sudah Memilih Kategori Pengajuan Dana",
+    //             icon: "warning",
+    //             button: "Ok",
+    //         })
+    //     }
+
+    //     // console.log('tombok aktif');
+    //     // var tata_cara = document.getElementById('tata_cara');
+
+    //     // if ($('#id_kategori').val() <=2 ) {
+    //     //     tata_cara.style.display = 'block';
+    //     // } else {
+    //     //     tata_cara.style.display = 'none';
+    //     // }
+    // });
 
     $('#generate_form').on('click', function(){
 
@@ -678,7 +1266,7 @@ $(document).ready(function() {
                 // var checkbox_pajak_7 = $('#checkbox_pajak_7');
                 var checkbox_pajak = [checkbox_pajak_1,checkbox_pajak_2,checkbox_pajak_3,checkbox_pajak_4,checkbox_pajak_5,checkbox_pajak_6]
 
-                for (let i=0;i<7;i++){
+                for (let i=0;i<6;i++){
                     if(checkbox_pajak[i][0].checked){
                             data_pajak.push({
                                 'id_jenis_pajak':i+1,
@@ -709,19 +1297,37 @@ $(document).ready(function() {
     function get_data_pembayaran(id_metode){
 
         var pemilik = $('#pemilik').val();
-        var nominal_bayar = parseFloat(nominal.value.replace(/,.*|[^0-9]/g, ''));
+
+        var nominal_trf = parseFloat(document.getElementById('nominal_trf').value.replace(/,.*|[^0-9]/g, ''));
+
+        if($('#id_kategori').val() == 1){
+            var jenis_vendor = $('#jenis_vendor').val();
+            var nominal_inv = parseFloat(document.getElementById('nominal_inv').value.replace(/,.*|[^0-9]/g, ''));
+        }else{
+            var jenis_vendor = null;
+            var nominal_inv = null;
+            if($('#id_kategori').val() == 4){
+                var jenis_pajak = $('#jenis_pajak').val();
+            }
+        }
+
+        // var nominal_bayar = parseFloat(nominal.value.replace(/,.*|[^0-9]/g, ''));
         var provider = null;
         var no_payment = null;
         if(id_metode != 2){
             provider = $('#provider').val();
             no_payment = $('#no_payment').val();
         }
+
         let data_pembayaran = {
                 "id_metode" : id_metode,
+                "jenis_vendor" : jenis_vendor,
                 "provider" : provider,
                 "no_payment" : no_payment,
                 "penerima" : pemilik,
-                "nominal" : nominal_bayar
+                "nominal_trf" : nominal_trf,
+                "nominal_inv" : nominal_inv,
+                "jenis_pajak" : jenis_pajak
             };
 
 

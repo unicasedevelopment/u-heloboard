@@ -251,36 +251,37 @@
                         </div>
 
                     </div>
-                    <div class="card-body text-secondary row" id="informasi_detail_refund">
+                    <div class="card-body text-secondary row" id="informasi_detail_refund" style="display:none;">
                         <label>
                             <h6>Informasi Detail Refund</h6>
                         </label>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label" for="no_inv">No. Invoice</label>
+                                <label class="col-sm-4 col-form-label" for="no_invoice">No. Invoice</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="no_inv" id="no_inv" class="form-control form-control-sm">
+                                    <input type="text" name="no_invoice" id="no_invoice"
+                                        class="form-control form-control-sm" required="reuqired">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label" for="no_retur">No. Retur</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="no_retur" id="no_retur"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm" required="reuqired">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label" for="alasan_refund">Alasan Refund</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="alasan_refund" id="alasan_refund"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm" required="reuqired">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label" for="no_inv_pengganti">No. Inv Pengganti</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="no_inv_pengganti" id="no_inv_pengganti"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm" required="reuqired">
                                 </div>
                             </div>
                         </div>
@@ -289,7 +290,7 @@
                                 <label class="col-sm-4 col-form-label" for="pilihan_cashback">Pilihan Cashback</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="pilihan_cashback" id="pilihan_cashback"
-                                        class="form-control form-control-sm">
+                                        class="form-control form-control-sm" required="reuqired">
                                 </div>
                             </div>
                             <div class="form-group row">
