@@ -969,10 +969,20 @@ $(document).ready(function() {
                 }else{
                     if ($('#status_pajak_6').val() == 'tanggung') {
                         $('#nominal_inv').attr('readonly',true);
-                        enable_nominal(id_kategori,"6", "tanggung", null ,false)
+                        if($('#jenis_vendor').val() == 'reguler'){
+                            enable_nominal(id_kategori,"6", "tanggung", "reguler", true)
+                        }else{
+                            enable_nominal(id_kategori,"6", "tanggung", "nonreguler", true)
+                        }
                     }else{
+                        console.log('potong')
                         $('#nominal_trf').attr('readonly',true);
-                        enable_nominal(id_kategori,"6", "potong", null ,false)
+                        if($('#jenis_vendor').val() == 'reguler'){
+                            console.log('ini jalan')
+                            enable_nominal(id_kategori,"6", "potong", "reguler", false)
+                        }else{
+                            enable_nominal(id_kategori,"6", "potong", "nonreguler", false)
+                        }
                     }
                 }
             }else{
@@ -1083,7 +1093,6 @@ $(document).ready(function() {
                         nominal_trf.value = formatRupiah(invoice);
                     }else{
                         dpp = invoice * 100 / 111 ;
-
                         if(jenis_vendor == 'reguler'){
                             ppn = invoice - dpp;
                             transfer = (dpp*90/100) + ppn ;
@@ -1100,20 +1109,25 @@ $(document).ready(function() {
                 }else{
                     if(jenis_vendor == 'reguler'){
                         if(status_pajak == 'tanggung'){
+                            console.log('harusnya 1')
                             invoice = transfer * 100 / 90 ;
                             nominal_inv.value = formatRupiah(invoice.toFixed(0));
                             nominal_trf.value = formatRupiah(transfer);
                         }else{
+                            console.log('harusnya 2')
                             transfer = invoice * 90 / 100 ;
                             nominal_trf.value = formatRupiah(transfer.toFixed(0));
                             nominal_inv.value = formatRupiah(invoice);
                         }
                     }else{
+                        console.log(jenis_vendor)
                         if(status_pajak == 'tanggung'){
+                            console.log('harusnya 3')
                             invoice = transfer * 100 / 99.5 ;
                             nominal_inv.value = formatRupiah(invoice.toFixed(0));
                             nominal_trf.value = formatRupiah(transfer);
                         }else{
+                            console.log('harusnya 4')
                             transfer = invoice * 99.5 / 100 ;
                             nominal_trf.value = formatRupiah(transfer.toFixed(0));
                             nominal_inv.value = formatRupiah(invoice);
