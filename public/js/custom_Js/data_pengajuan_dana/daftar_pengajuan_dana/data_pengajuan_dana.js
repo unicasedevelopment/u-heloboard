@@ -72,10 +72,16 @@ $(document).ready(function() {
 
     function set_informasi_pembayaran(informasi_pembayaran){
         if(informasi_pembayaran != null){
+
             $('#pemilik').val(informasi_pembayaran.penerima);
-            $('#nominal').val(formatRupiah(String(informasi_pembayaran.nominal)));
             $('#provider').val(informasi_pembayaran.provider).trigger("change");
             $('#no_payment').val(informasi_pembayaran.no_payment);
+            if($('#id_kategori').val() == 1){
+                $('#jenis_vendor').val(informasi_pembayaran.jenis_vendor);
+                $('#nominal_inv').val(formatRupiah(String(informasi_pembayaran.nominal_inv)));
+                $('#nominal_trf').val(formatRupiah(String(informasi_pembayaran.nominal_trf)));
+            }
+            // $('#nominal').val(formatRupiah(String(informasi_pembayaran.nominal)));
         }
     }
 
@@ -275,7 +281,8 @@ $(document).ready(function() {
             $('#provider').attr('disabled',true);
             $('#pemilik').attr('disabled',true);
             $('#no_payment').attr('disabled',true);
-            $('#nominal').attr('disabled',true);
+            $('#nominal_inv').attr('disabled',true);
+            $('#nominal_trf').attr('disabled',true);
             $('#npwp').attr('disabled',true);
             $('#nik').attr('disabled',true);
             $('#add_lampiran').hide();
@@ -352,7 +359,7 @@ $(document).ready(function() {
                         set_informasi_lampiran(informasi_lampiran)
                         set_dokumen_pengajuan(dokumen_pengajuan)
                         set_informasi_status_pengajuan(data)
-                        enable_edit(data.status_pengajuan);
+                        // enable_edit(data.status_pengajuan);
 
                         enable_edit(data,false);
                         // $('#penerima').val(data.penerima);

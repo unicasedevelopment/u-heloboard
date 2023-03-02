@@ -1,5 +1,96 @@
 $(document).ready(function() {
 
+    var metode_bank_cat_1 =   '<label style="font-weight: normal;" for="">Detail Pembayaran Non-Tunai</label>' +
+                        '<div class="row">'+
+                            '<div class="col-md-6">'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="provider">Bank</label>'+
+                                    '<div class="col-sm-8">'+
+                                    '<select name="provider" id="provider" required="reuqired" class="form-control form-control-sm select2" data-select2-id="11">'+
+                                        '<option value="">Pilih</option>'+
+                                        '<option value="BCA">BCA</option>'+
+                                        '<option value="Mandiri">Mandiri</option>'+
+                                        '<option value="BNI">BNI</option>'+
+                                        '<option value="BRI">BRI</option>'+
+                                        '<option value="Lainnya">Lainnya</option>'+
+                                    '</select>'+
+                                    '<input style="display: none;" type="text" name="other_provider" id="other_provider" class="form-control form-control-sm" placeholder="E-Wallet ...">'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="pemilik">Nama Penerima </label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="nama" required="reuqired">'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="no_payment">No. Rek/VA/Id Bill </label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="no_payment" id="no_payment" class="form-control form-control-sm" placeholder="nomor" required="reuqired">'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="col-md-6">'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="nominal_inv">Nominal Inv.</label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="nominal_inv" id="nominal_inv" class="form-control form-control-sm" placeholder="nominal_inv" required="reuqired"></td>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="nominal_trf">Nominal Trf.</label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="nominal_trf" id="nominal_trf" class="form-control form-control-sm" placeholder="nominal_trf" required="reuqired"></td>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>';
+    var metode_bank_cat_4 =   '<label style="font-weight: normal;" for="">Detail Pembayaran Non-Tunai</label>' +
+                        '<div class="row">'+
+                            '<div class="col-md-6">'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="provider">Bank</label>'+
+                                    '<div class="col-sm-8">'+
+                                    '<select name="provider" id="provider"  class="form-control form-control-sm select2" data-select2-id="11">'+
+                                        '<option value="">Pilih</option>'+
+                                        '<option value="BCA">BCA</option>'+
+                                        '<option value="Mandiri">Mandiri</option>'+
+                                        '<option value="BNI">BNI</option>'+
+                                        '<option value="BRI">BRI</option>'+
+                                        '<option value="Lainnya">Lainnya</option>'+
+                                    '</select>'+
+                                    '<input style="display: none;" type="text" name="other_provider" id="other_provider" class="form-control form-control-sm" placeholder="E-Wallet ...">'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="pemilik">Nama Penerima </label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="nama" required="reuqired">'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="no_payment">No. Rek/VA/Id Bill </label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="no_payment" id="no_payment" class="form-control form-control-sm" placeholder="nomor" required="reuqired">'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="col-md-6">'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="nominal_inv">Nominal Inv.</label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="nominal_inv" id="nominal_inv" class="form-control form-control-sm" placeholder="nominal_inv" required="reuqired"></td>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="nominal_trf">Nominal Trf.</label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="nominal_trf" id="nominal_trf" class="form-control form-control-sm" placeholder="nominal_trf" required="reuqired"></td>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>';
+
     var metode_bank =   '<label style="font-weight: normal;" for="">Detail Pembayaran Non-Tunai</label>' +
                         '<div class="row">'+
                             '<div class="col-md-6">'+
@@ -20,7 +111,7 @@ $(document).ready(function() {
                                 '<div class="form-group row">'+
                                     '<label class="col-sm-4 col-form-label" for="pemilik">Nama Penerima </label>'+
                                     '<div class="col-sm-8">'+
-                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="">'+
+                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="nama" required="reuqired">'+
                                     '</div>'+
                                 '</div>'+
                             '</div>'+
@@ -28,16 +119,108 @@ $(document).ready(function() {
                                 '<div class="form-group row">'+
                                     '<label class="col-sm-4 col-form-label" for="no_payment">No. Rek/VA/Id Bill </label>'+
                                     '<div class="col-sm-8">'+
-                                        '<input type="text" name="no_payment" id="no_payment" class="form-control form-control-sm" placeholder="">'+
+                                        '<input type="text" name="no_payment" id="no_payment" class="form-control form-control-sm" placeholder="nomor" required="reuqired">'+
                                     '</div>'+
                                 '</div>'+
                                 '<div class="form-group row">'+
-                                    '<label class="col-sm-4 col-form-label" for="nominal">Nominal </label>'+
+                                    '<label class="col-sm-4 col-form-label" for="nominal_trf">Nominal Trf.</label>'+
                                     '<div class="col-sm-8">'+
-                                        '<input type="text" name="nominal" id="nominal" class="form-control form-control-sm" placeholder=""></td>'+
+                                        '<input type="text" name="nominal_trf" id="nominal_trf" class="form-control form-control-sm" placeholder="nominal_trf" required="reuqired"></td>'+
                                     '</div>'+
                                 '</div>'+
                             '</div>';
+
+    var metode_lain_cat_1 =   '<label style="font-weight: normal;" for="">Detail Pembayaran Non-Tunai</label>' +
+                        '<div class="row">'+
+                            '<div class="col-md-6">'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="provider">E-Wallet</label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<select name="provider" id="provider" required="reuqired" class="form-control form-control-sm select2" data-select2-id="12">'+
+                                            '<option value="">Pilih</option>'+
+                                            '<option value="Gopay">Gopay</option>'+
+                                            '<option value="Gopay Coins">Gopay Coins</option>'+
+                                            '<option value="OVO">OVO</option>'+
+                                            '<option value="Shopeepay">Shopeepay</option>'+
+                                            '<option value="Lainnya">Lainnya</option>'+
+                                        '</select>'+
+                                        '<input style="display: none;" type="text" name="other_provider" id="other_provider" class="form-control form-control-sm" placeholder="E- Wallet ...">'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="pemilik">Nama Penerima </label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="nama" required="reuqired">'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                '<label class="col-sm-4 col-form-label" for="no_payment">No. Rek/VA/Id Bill </label>'+
+                                '<div class="col-sm-8">'+
+                                    '<input type="text" name="no_payment" id="no_payment" class="form-control form-control-sm" placeholder="nomor" required="reuqired">'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="col-md-6">'+
+                            '<div class="form-group row">'+
+                                '<label class="col-sm-4 col-form-label" for="nominal_inv">Nominal Inv.</label>'+
+                                '<div class="col-sm-8">'+
+                                    '<input type="text" name="nominal_inv" id="nominal_inv" class="form-control form-control-sm" placeholder="nominal_inv" required="reuqired"></td>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group row">'+
+                                '<label class="col-sm-4 col-form-label" for="nominal_trf">Nominal Trf.</label>'+
+                                '<div class="col-sm-8">'+
+                                    '<input type="text" name="nominal_trf" id="nominal_trf" class="form-control form-control-sm" placeholder="nominal_trf" required="reuqired"></td>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>';
+    var metode_lain_cat_4 =   '<label style="font-weight: normal;" for="">Detail Pembayaran Non-Tunai</label>' +
+                        '<div class="row">'+
+                            '<div class="col-md-6">'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="provider">E-Wallet</label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<select name="provider" id="provider" class="form-control form-control-sm select2" data-select2-id="12">'+
+                                            '<option value="">Pilih</option>'+
+                                            '<option value="Gopay">Gopay</option>'+
+                                            '<option value="Gopay Coins">Gopay Coins</option>'+
+                                            '<option value="OVO">OVO</option>'+
+                                            '<option value="Shopeepay">Shopeepay</option>'+
+                                            '<option value="Lainnya">Lainnya</option>'+
+                                        '</select>'+
+                                        '<input style="display: none;" type="text" name="other_provider" id="other_provider" class="form-control form-control-sm" placeholder="E- Wallet ...">'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="pemilik">Nama Penerima </label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="nama" required="reuqired">'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                '<label class="col-sm-4 col-form-label" for="no_payment">No. Rek/VA/Id Bill </label>'+
+                                '<div class="col-sm-8">'+
+                                    '<input type="text" name="no_payment" id="no_payment" class="form-control form-control-sm" placeholder="nomor" required="reuqired">'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '<div class="col-md-6">'+
+                            '<div class="form-group row">'+
+                                '<label class="col-sm-4 col-form-label" for="nominal_inv">Nominal Inv.</label>'+
+                                '<div class="col-sm-8">'+
+                                    '<input type="text" name="nominal_inv" id="nominal_inv" class="form-control form-control-sm" placeholder="nominal_inv" required="reuqired"></td>'+
+                                '</div>'+
+                            '</div>'+
+                            '<div class="form-group row">'+
+                                '<label class="col-sm-4 col-form-label" for="nominal_trf">Nominal Trf.</label>'+
+                                '<div class="col-sm-8">'+
+                                    '<input type="text" name="nominal_trf" id="nominal_trf" class="form-control form-control-sm" placeholder="nominal_trf" required="reuqired"></td>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>';
+
     var metode_lain =   '<label style="font-weight: normal;" for="">Detail Pembayaran Non-Tunai</label>' +
                         '<div class="row">'+
                             '<div class="col-md-6">'+
@@ -58,7 +241,7 @@ $(document).ready(function() {
                                 '<div class="form-group row">'+
                                     '<label class="col-sm-4 col-form-label" for="pemilik">Nama Penerima </label>'+
                                     '<div class="col-sm-8">'+
-                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="">'+
+                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="nama" required="reuqired">'+
                                     '</div>'+
                                 '</div>'+
                             '</div>'+
@@ -66,13 +249,13 @@ $(document).ready(function() {
                                 '<div class="form-group row">'+
                                     '<label class="col-sm-4 col-form-label" for="no_payment">No. Akun </label>'+
                                     '<div class="col-sm-8">'+
-                                        '<input type="text" name="no_payment" id="no_payment" class="form-control form-control-sm" placeholder="">'+
+                                        '<input type="text" name="no_payment" id="no_payment" class="form-control form-control-sm" placeholder="nomor" required="reuqired">'+
                                     '</div>'+
                                 '</div>'+
                                 '<div class="form-group row">'+
-                                    '<label class="col-sm-4 col-form-label" for="nominal">Nominal </label>'+
+                                    '<label class="col-sm-4 col-form-label" for="nominal_trf">Nominal Trf.</label>'+
                                     '<div class="col-sm-8">'+
-                                        '<input type="text" name="nominal" id="nominal" class="form-control form-control-sm" placeholder=""></td>'+
+                                        '<input type="text" name="nominal_trf" id="nominal_trf" class="form-control form-control-sm" placeholder="nominal_trf" required="reuqired"></td>'+
                                     '</div>'+
                                 '</div>'+
                             '</div>';
@@ -83,18 +266,45 @@ $(document).ready(function() {
                                 '<div class="form-group row">'+
                                     '<label class="col-sm-4 col-form-label" for="pemilik">Nama Penerima </label>'+
                                     '<div class="col-sm-8">'+
-                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="">'+
+                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="nama" required="reuqired">'+
                                     '</div>'+
                                 '</div>'+
                             '</div>'+
                             '<div class="col-md-6">'+
                                 '<div class="form-group row">'+
-                                    '<label class="col-sm-4 col-form-label" for="nominal">Nominal </label>'+
+                                    '<label class="col-sm-4 col-form-label" for="nominal_trf">Nominal Trf.</label>'+
                                     '<div class="col-sm-8">'+
-                                        '<input type="text" name="nominal" id="nominal" class="form-control form-control-sm" placeholder=""></td>'+
+                                        '<input type="text" name="nominal_trf" id="nominal_trf" class="form-control form-control-sm" placeholder="nominal_trf" required="reuqired"></td>'+
                                     '</div>'+
                                 '</div>'+
                             '</div>';
+
+    var metode_cash_cat_1 = '<label style="font-weight: normal;" for="">Detail Pembayaran Tunai</label>' +
+                        '<div class="row">'+
+                            '<div class="col-md-6">'+
+                                '<div class="form-group row">'+
+                                    '<label class="col-sm-4 col-form-label" for="pemilik">Nama Penerima </label>'+
+                                    '<div class="col-sm-8">'+
+                                        '<input type="text" name="pemilik" id="pemilik" class="form-control form-control-sm" placeholder="nama" required="reuqired">'+
+                                    '</div>'+
+                                '</div>'+
+                                '<div class="form-group row">'+
+                                '<label class="col-sm-4 col-form-label" for="nominal_inv">Nominal Inv.</label>'+
+                                '<div class="col-sm-8">'+
+                                    '<input type="text" name="nominal_inv" id="nominal_inv" class="form-control form-control-sm" placeholder="nominal_inv" required="reuqired"></td>'+
+                                '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '<div class="col-md-6">'+
+
+                            '<div class="form-group row">'+
+                                '<label class="col-sm-4 col-form-label" for="nominal_trf">Nominal Trf.</label>'+
+                                '<div class="col-sm-8">'+
+                                    '<input type="text" name="nominal_trf" id="nominal_trf" class="form-control form-control-sm" placeholder="nominal_trf" required="reuqired"></td>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '</div>';
 
     $('#btn_panduan').on('click', function() {
         console.log('tombok aktif');
@@ -240,18 +450,103 @@ $(document).ready(function() {
     });
 
     $('#id_metode').on('change', function() {
+        // if ($('#id_metode').val() == '') {
+        //     document.getElementById('detail_metode_field').innerHTML = '';
+        // }else{
+        //     if ($('#id_metode').val() == '2') {
+        //         console.log('dua')
+        //         document.getElementById('detail_metode_field').innerHTML = '';
+        //         $('#detail_metode_field').append(metode_cash);
+        //     }
+        //     else if ($('#id_metode').val() == '4') {
+        //         console.log('empat')
+        //         document.getElementById('detail_metode_field').innerHTML = '';
+        //         $('#detail_metode_field').append(metode_lain);
+        //         $('#provider').select2({
+        //             placeholder: "Pilih",
+        //             allowClear: true
+        //         });
+        //         $('#provider').on('change', function() {
+        //             if($('#provider').val() == 'Lainnya') {
+        //                 console.log('fungsi aktif');
+        //                 document.getElementById('other_provider').style.display = 'block';
+        //             }else{
+        //                 document.getElementById('other_provider').style.display = 'none';
+        //             }
+        //         });
+        //     }
+        //     else {
+        //         document.getElementById('detail_metode_field').innerHTML = '';
+        //         $('#detail_metode_field').append(metode_bank);
+        //         $('#provider').select2({
+        //             placeholder: "Pilih",
+        //             allowClear: true
+        //         });
+        //         $('#provider').on('change', function() {
+        //             if($('#provider').val() == 'Lainnya') {
+        //                 console.log('fungsi aktif');
+        //                 document.getElementById('other_provider').style.display = 'block';
+        //             }else{
+        //                 document.getElementById('other_provider').style.display = 'none';
+        //             }
+        //         });
+        //     }
+
+        //     $("input[name='no_payment']").on('input', function(e) {
+        //         $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        //     });
+
+        //     $("input[name='nominal']").on('input', function(e) {
+        //         $(this).val($(this).val().replace(/[^0-9]/g, ''));
+        //         // var new_val = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format($(this).val());
+        //     });
+
+        //     var nominal = document.getElementById("nominal");
+        //     nominal.addEventListener("keyup", function(e) {
+        //         nominal.value = formatRupiah(this.value);
+        //     });
+
+        //     function formatRupiah(angka) {
+        //     var number_string = angka.replace(/[^,\d]/g, "").toString(),
+        //         split = number_string.split(","),
+        //         sisa = split[0].length % 3,
+        //         rupiah = split[0].substr(0, sisa),
+        //         ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+        //     if (ribuan) {
+        //         separator = sisa ? "." : "";
+        //         rupiah += separator + ribuan.join(".");
+        //     }
+
+        //     rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+        //     return rupiah;
+        //     }
+        // }
+
         if ($('#id_metode').val() == '') {
             document.getElementById('detail_metode_field').innerHTML = '';
         }else{
+            // $("#id_metode").attr('disabled', true)
             if ($('#id_metode').val() == '2') {
-                console.log('dua')
                 document.getElementById('detail_metode_field').innerHTML = '';
-                $('#detail_metode_field').append(metode_cash);
+                if ($('#id_kategori').val() == 1){
+                    $('#detail_metode_field').append(metode_cash_cat_1);
+                }else{
+                    $('#detail_metode_field').append(metode_cash);
+                }
+
             }
             else if ($('#id_metode').val() == '4') {
-                console.log('empat')
                 document.getElementById('detail_metode_field').innerHTML = '';
-                $('#detail_metode_field').append(metode_lain);
+                if ($('#id_kategori').val() == 1){
+                    $('#detail_metode_field').append(metode_lain_cat_1);
+                }else{
+                    $('#detail_metode_field').append(metode_lain);
+                    if($('#id_kategori').val() == 4){
+                        $('#provider').attr('required', false);
+                    }
+
+                }
+
                 $('#provider').select2({
                     placeholder: "Pilih",
                     allowClear: true
@@ -267,7 +562,14 @@ $(document).ready(function() {
             }
             else {
                 document.getElementById('detail_metode_field').innerHTML = '';
-                $('#detail_metode_field').append(metode_bank);
+                if ($('#id_kategori').val() == 1){
+                    $('#detail_metode_field').append(metode_bank_cat_1);
+                }else{
+                    $('#detail_metode_field').append(metode_bank);
+                    if($('#id_kategori').val() == 4){
+                        $('#provider').attr('required', false);
+                    }
+                }
                 $('#provider').select2({
                     placeholder: "Pilih",
                     allowClear: true
@@ -280,7 +582,12 @@ $(document).ready(function() {
                         document.getElementById('other_provider').style.display = 'none';
                     }
                 });
+
+
+
             }
+
+            // cek_status_pajak()
 
             $("input[name='no_payment']").on('input', function(e) {
                 $(this).val($(this).val().replace(/[^0-9]/g, ''));
@@ -291,25 +598,8 @@ $(document).ready(function() {
                 // var new_val = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format($(this).val());
             });
 
-            var nominal = document.getElementById("nominal");
-            nominal.addEventListener("keyup", function(e) {
-                nominal.value = formatRupiah(this.value);
-            });
 
-            function formatRupiah(angka) {
-            var number_string = angka.replace(/[^,\d]/g, "").toString(),
-                split = number_string.split(","),
-                sisa = split[0].length % 3,
-                rupiah = split[0].substr(0, sisa),
-                ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-            if (ribuan) {
-                separator = sisa ? "." : "";
-                rupiah += separator + ribuan.join(".");
-            }
 
-            rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-            return rupiah;
-            }
         }
 
     });

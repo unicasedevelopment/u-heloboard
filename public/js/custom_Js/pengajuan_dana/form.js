@@ -342,12 +342,15 @@ $(document).ready(function() {
         $('.info_jenis_vendor').remove()
         $("#id_metode").val('').trigger('change')
         document.getElementById('detail_metode_field').innerHTML = '';
+        // document.getElementById('informasi_detail_refund').innerHTML = '';
+
         let tata_cara = document.getElementById('tata_cara');
         // let pajak_field = document.getElementById('pajak_field');
         let pajak_field_1 = document.getElementById('pajak_field_1');
         let pajak_field_2 = document.getElementById('pajak_field_2');
         let informasi_perpajakan = document.getElementById('informasi_perpajakan');
         let informasi_lampiran = document.getElementById('informasi_lampiran');
+        let informasi_detail_refund = document.getElementById('informasi_detail_refund');
         let all_form_field = document.getElementById('all_form_field');
         let kategori = $('#id_kategori').val();
 
@@ -755,6 +758,57 @@ $(document).ready(function() {
                 informasi_lampiran.style.display = 'none';
                 tata_cara.style.display = 'none';
                 if(kategori == 4){
+                    var detail_refund_field =   '<label>'+
+                                                    '<h6>Informasi Detail Refund</h6>'+
+                                                '</label>'+
+                                                '<div class="col-md-6">'+
+                                                    '<div class="form-group row">'+
+                                                        '<label class="col-sm-4 col-form-label" for="no_inv">No. Invoice</label>'+
+                                                        '<div class="col-sm-8">'+
+                                                            '<input type="text" name="no_inv" id="no_inv" class="form-control form-control-sm">'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                    '<div class="form-group row">'+
+                                                        '<label class="col-sm-4 col-form-label" for="no_retur">No. Retur</label>'+
+                                                        '<div class="col-sm-8">'+
+                                                            '<input type="text" name="no_retur" id="no_retur"'+
+                                                                'class="form-control form-control-sm">'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                    '<div class="form-group row">'+
+                                                        '<label class="col-sm-4 col-form-label" for="alasan_refund">Alasan Refund</label>'+
+                                                        '<div class="col-sm-8">'+
+                                                            '<input type="text" name="alasan_refund" id="alasan_refund"'+
+                                                                'class="form-control form-control-sm">'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                    '<div class="form-group row">'+
+                                                        '<label class="col-sm-4 col-form-label" for="no_inv_pengganti">No. Inv Pengganti</label>'+
+                                                        '<div class="col-sm-8">'+
+                                                            '<input type="text" name="no_inv_pengganti" id="no_inv_pengganti"'+
+                                                                'class="form-control form-control-sm">'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                                '<div class="col-md-6">'+
+                                                    '<div class="form-group row">'+
+                                                        '<label class="col-sm-4 col-form-label" for="pilihan_cashback">Pilihan Cashback</label>'+
+                                                        '<div class="col-sm-8">'+
+                                                            '<input type="text" name="pilihan_cashback" id="pilihan_cashback"'+
+                                                                'class="form-control form-control-sm">'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                    '<div class="form-group row">'+
+                                                        '<label class="col-sm-4 col-form-label" for="barcode_barang">Barcode Barang</label>'+
+                                                        '<div class="col-sm-8">'+
+                                                            '<textarea rows="3" type="text" name="barcode_barang" id="barcode_barang"'+
+                                                                'style="height: 4.875rem;" class="form-control form-control-sm"'+
+                                                                'required="reuqired" value=""></textarea>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>';
+                    // informasi_detail_refund.innerHTML = detail_refund_field;
+                    informasi_detail_refund.style.display = 'block';
                     var select_jenis_pajak =    '<div class="form-group row">'+
                                                     '<label class="col-sm-4 col-form-label" for="jenis_pajak">Jenis Pajak</label>'+
                                                     '<div class="col-sm-8">'+
@@ -1070,7 +1124,6 @@ $(document).ready(function() {
     }
 
     $('#id_metode').on('change', function() {
-        console.log('fungsi id_metode jalan')
         if ($('#id_metode').val() == '') {
             document.getElementById('detail_metode_field').innerHTML = '';
         }else{
