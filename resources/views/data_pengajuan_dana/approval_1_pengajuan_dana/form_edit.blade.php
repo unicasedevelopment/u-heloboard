@@ -167,6 +167,9 @@
                     <h6>Informasi Pembayaran</h6>
                 </label>
                 <div class="col-md-6">
+                    <div id="informasi_vendor_tambahan">
+
+                    </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label" for="tgl_pengajuan">Tgl. Pengajuan</label>
                         <div class="col-sm-8">
@@ -301,7 +304,7 @@
                 <div id="lampiran_lain_field" style="display:none;">
                 </div>
             </div>
-            <div class="card-body text-secondary row" id="informasi_pembayaran">
+            <div class="card-body text-secondary row" id="informasi_status">
                 <label>
                     <h6>Informasi Status</h6>
                 </label>

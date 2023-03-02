@@ -73,9 +73,21 @@ $(document).ready(function() {
     function set_informasi_pembayaran(informasi_pembayaran){
         if(informasi_pembayaran != null){
             $('#pemilik').val(informasi_pembayaran.penerima);
-            $('#nominal').val(formatRupiah(String(informasi_pembayaran.nominal)));
             $('#provider').val(informasi_pembayaran.provider).trigger("change");
             $('#no_payment').val(informasi_pembayaran.no_payment);
+
+            if(informasi_pembayaran.jenis_vendor != null){
+                $('#jenis_vendor').val(informasi_pembayaran.jenis_vendor);
+            }
+            if(informasi_pembayaran.nominal_inv != null){
+                $('#nominal_inv').val(formatRupiah(String(informasi_pembayaran.nominal_inv)));
+            }
+            if(informasi_pembayaran.nominal_trf != null){
+                $('#nominal_trf').val(formatRupiah(String(informasi_pembayaran.nominal_trf)));
+            }
+            if(informasi_pembayaran.jenis_pajak != null){
+                $('#jenis_pajak').val(informasi_pembayaran.jenis_pajak).trigger("change");
+            }
         }
     }
 
@@ -106,6 +118,20 @@ $(document).ready(function() {
             }else{
                 $('#file_invoice_field').hide();
                 $('#no_file_invoice').show();
+            }
+            if(dokumen_pengajuan.file_fp_internal != null){
+                $('#file_fp_internal_field').attr("href","/storage/"+dokumen_pengajuan.file_invoice);
+                $('#no_file_fp_internal').hide();
+            }else{
+                $('#file_fp_internal_field').hide();
+                $('#no_file_fp_internal').show();
+            }
+            if(dokumen_pengajuan.file_bukti_bayar != null){
+                $('#file_bukti_bayar_field').attr("href","/storage/"+dokumen_pengajuan.file_invoice);
+                $('#no_file_bukti_bayar').hide();
+            }else{
+                $('#file_bukti_bayar_field').hide();
+                $('#no_file_bukti_bayar').show();
             }
         }
     }
