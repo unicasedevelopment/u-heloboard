@@ -236,7 +236,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6">d
                             <div class="form-group row">
                                 <label class="col-sm-4 col-form-label" for="keperluan">Keperluan</label>
                                 <div class="col-sm-8">
