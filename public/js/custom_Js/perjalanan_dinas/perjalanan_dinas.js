@@ -42,7 +42,7 @@ $(document).ready(function() {
     function Generate_PDF(data_perjalanan_dinas){
         // $('#modal_eksport_pdf').hide();
         var no_surat = $('#no_surat').val();
-        var no_surat_tugas = $('#no_surat_tugas').val();
+        // var no_surat_tugas = $('#no_surat_tugas').val();
         var nama = $('#nama').val();
         var nik = $('#nik').val();
         var jabatan = $('#jabatan').val();
@@ -94,7 +94,7 @@ $(document).ready(function() {
         doc.setFontSize(13);
         doc.text("Nomor : "+no_surat, 59, yPos,);
         doc.setFontSize(10);
-        yPos += 10;
+        yPos += 7;
 
         doc.text("A.", 20, yPos)
         doc.setFontType('reguler');;
@@ -139,10 +139,10 @@ $(document).ready(function() {
         // doc.text(":", 80, yPos);
         // doc.text(tujuan, 85, yPos);
         // yPos += 5;
-        doc.text("No. Surat Tugas", 35, yPos);
-        doc.text(":", 80, yPos);
-        doc.text(no_surat_tugas, 85, yPos);
-        yPos += 5;
+        // doc.text("No. Surat Tugas", 35, yPos);
+        // doc.text(":", 80, yPos);
+        // doc.text(no_surat_tugas, 85, yPos);
+        // yPos += 5;
 
         doc.text("Keperluan Dinas", 35, yPos);
         doc.text(":", 80, yPos);
@@ -178,12 +178,13 @@ $(document).ready(function() {
         // doc.text(durasi_hari + " hari "+ durasi_malam + " malam", 85, yPos);
 
 
-        doc.setFontType('bold');
-        yPos += 7;
-        doc.text("C.", 20, yPos);
-        doc.text("Informasi Keberangkatan", 30, yPos);
-        yPos += 7;
+        // doc.setFontType('bold');
+        // yPos += 7;
+        // doc.text("C.", 20, yPos);
+        // doc.text("Informasi Keberangkatan", 30, yPos);
+        // yPos += 7;
 
+        yPos += 5;
         doc.setFontType('regular');
         doc.text("Lokasi Keberangkatan", 35, yPos);
         doc.text(":", 80, yPos);
@@ -193,8 +194,8 @@ $(document).ready(function() {
         doc.text("Tanggal keberangkatan", 35, yPos);
         doc.text(":", 80, yPos);
         doc.text(tgl_keberangkatan, 85, yPos);
-        doc.text(jam_keberangkatan, 105, yPos);
-        doc.text('WIB', 115, yPos);
+        doc.text(jam_keberangkatan, 103, yPos);
+        doc.text('WIB', 112, yPos);
 
 
         yPos += 5;
@@ -204,12 +205,13 @@ $(document).ready(function() {
         doc.text(transportasi_keberangkatan, 85, yPos);
 
 
-        doc.setFontType('bold');
-        yPos += 7;
-        doc.text("D.", 20, yPos);
-        doc.text("Informasi Kedatangan", 30, yPos);
-        yPos += 7;
+        // doc.setFontType('bold');
+        // yPos += 7;
+        // doc.text("D.", 20, yPos);
+        // doc.text("Informasi Kedatangan", 30, yPos);
+        // yPos += 7;
 
+        yPos += 5;
         doc.setFontType('regular');
         doc.text("Lokasi Kedatangan", 35, yPos);
         doc.text(":", 80, yPos);
@@ -219,13 +221,52 @@ $(document).ready(function() {
         doc.text("Tanggal Kedatangan", 35, yPos);
         doc.text(":", 80, yPos);
         doc.text(tgl_kedatangan, 85, yPos);
-        doc.text(jam_kedatangan, 105, yPos);
-        doc.text('WIB', 115, yPos);
+        doc.text(jam_kedatangan, 103, yPos);
+        doc.text('WIB', 112, yPos);
         yPos += 5;
 
         doc.text("Transportasi Kedatangan", 35, yPos);
         doc.text(":", 80, yPos);
         doc.text(transportasi_kedatangan, 85, yPos);
+
+        doc.setFontType('bold');
+        yPos += 7;
+        doc.text("C.", 20, yPos);
+        doc.text("Informasi Surat Tugas", 30, yPos);
+        yPos += 7;
+
+
+        doc.line(85, yPos-4, 85, yPos+2);
+        doc.line(85, yPos-4, 130, yPos-4);
+        doc.line(85, yPos+2, 130, yPos+2);
+        doc.line(130, yPos-4, 130, yPos+2);
+
+
+        doc.setFontType('regular');
+        doc.text("No. Surat Tugas", 35, yPos);
+        doc.text(":", 80, yPos);
+        // doc.text(lokasi_kedatangan, 85, yPos);
+
+        doc.setFontType('bold');
+        yPos += 7;
+        doc.text("D.", 20, yPos);
+        doc.text("Data Pendukung Perjalanan Dinas", 30, yPos);
+
+        yPos += 7;
+
+        doc.line(85, yPos-4, 85, yPos+2);
+        doc.line(86, yPos-1.5, 87.3, yPos);
+        doc.line(90, yPos-2, 87.3, yPos);
+        doc.line(85, yPos-4, 91, yPos-4);
+        doc.line(85, yPos+2, 91, yPos+2);
+        doc.line(91, yPos-4, 91, yPos+2);
+
+        doc.setFontType('regular');
+        doc.text("Terlampir", 35, yPos);
+        doc.text(":", 80, yPos);
+
+
+
 
         doc.setFontType('bold');
         yPos += 7;
@@ -243,11 +284,11 @@ $(document).ready(function() {
         yPos += 5;
 
         // garis vertical
-        doc.line(20, yPos+49, 20, yPos);
-        doc.line(62.5, yPos+49, 62.5, yPos);
-        doc.line(105, yPos+49, 105, yPos);
-        doc.line(147.5, yPos+49, 147.5, yPos);
-        doc.line(190, yPos+49, 190, yPos);
+        doc.line(20, yPos+41, 20, yPos);
+        doc.line(62.5, yPos+41, 62.5, yPos);
+        doc.line(105, yPos+41, 105, yPos);
+        doc.line(147.5, yPos+41, 147.5, yPos);
+        doc.line(190, yPos+41, 190, yPos);
         // doc.line(20, yPos+49, 20, yPos);
         // doc.line(76.6, yPos+49, 76.6, yPos);
         // doc.line(133.4, yPos+49, 133.4, yPos);
@@ -256,20 +297,26 @@ $(document).ready(function() {
 
         // garis horizontal
         doc.line(20, yPos, 190, yPos);
-        yPos += 7;
-        doc.text("Pemohon", 34, yPos);
+        doc.setFontSize(8);
+        yPos += 4;
+        doc.text("Pemohon", 34, yPos+1.5);
         doc.text("Menyetujui", 76, yPos);
         doc.text("Mengetahui", 118, yPos);
         doc.text("Mengetahui", 160, yPos);
+        yPos += 3;
+        // doc.text("Pemohon", 34, yPos);
+        doc.text("Atasan Pemohon", 73, yPos);
+        doc.text("Spv. General Affair", 114, yPos);
+        doc.text("Spv. Finance", 159, yPos);
 
 
         // doc.text("Pemohon", 39.5, yPos);
         // doc.text("Mengetahui", 98, yPos);
         // doc.text("Menyetujui", 151, yPos);
-        yPos += 5;
+        yPos += 2;
         doc.line(20, yPos, 190, yPos);
-        doc.addImage(data,'png', 35, yPos,25,25);
-        yPos += 21;
+        doc.addImage(data,'png', 27, yPos-5,27,27);
+        yPos += 16;
         doc.line(20, yPos, 190, yPos);
         yPos += 5;
 
@@ -319,9 +366,15 @@ $(document).ready(function() {
         doc.text("Sehubungan dengan, ", 20, yPos);
         yPos += 5;
 
+
+        doc.line(75, yPos-6, 75, yPos);
+        doc.line(75, yPos-6, 120, yPos-6);
+        doc.line(75, yPos, 120, yPos);
+        doc.line(120, yPos-6, 120, yPos);
+
         doc.text("No. Surat Tugas", 20, yPos);
         doc.text(":", 70, yPos);
-        doc.text(no_surat_tugas, 75, yPos);
+        // doc.text(no_surat_tugas, 75, yPos);
         yPos += 5;
 
         doc.text("No. FPPD", 20, yPos);
@@ -339,11 +392,16 @@ $(document).ready(function() {
 
         doc.text("Alasan Pembatalan", 20, yPos);
         doc.text(":", 70, yPos);
+        yPos += 3;
+
+        doc.line(20, yPos+27, 20, yPos);
+        doc.line(20,  yPos+27, 190,  yPos+27);
+        doc.line(20, yPos, 190, yPos);
+        doc.line(190,  yPos+27, 190, yPos);
 
         // doc.text(jabatan, 85, yPos);
 
-        yPos += 30;
-
+        yPos += 33;
         doc.text("Maka dengan ini, ", 20, yPos);
         yPos += 8;
 
@@ -380,13 +438,12 @@ $(document).ready(function() {
         yPos += 10;
 
 
-
         // garis vertical
-        doc.line(20, yPos+49, 20, yPos);
-        doc.line(62.5, yPos+49, 62.5, yPos);
-        doc.line(105, yPos+49, 105, yPos);
-        doc.line(147.5, yPos+49, 147.5, yPos);
-        doc.line(190, yPos+49, 190, yPos);
+        doc.line(20, yPos+41, 20, yPos);
+        doc.line(62.5, yPos+41, 62.5, yPos);
+        doc.line(105, yPos+41, 105, yPos);
+        doc.line(147.5, yPos+41, 147.5, yPos);
+        doc.line(190, yPos+41, 190, yPos);
         // doc.line(20, yPos+49, 20, yPos);
         // doc.line(76.6, yPos+49, 76.6, yPos);
         // doc.line(133.4, yPos+49, 133.4, yPos);
@@ -395,26 +452,32 @@ $(document).ready(function() {
 
         // garis horizontal
         doc.line(20, yPos, 190, yPos);
-        yPos += 7;
-        doc.text("Pemohon", 34, yPos);
+        doc.setFontSize(8);
+        yPos += 4;
+        doc.text("Pemohon", 34, yPos+1.5);
         doc.text("Menyetujui", 76, yPos);
         doc.text("Mengetahui", 118, yPos);
         doc.text("Mengetahui", 160, yPos);
+        yPos += 3;
+        // doc.text("Pemohon", 34, yPos);
+        doc.text("Atasan Pemohon", 73, yPos);
+        doc.text("Spv. General Affair", 114, yPos);
+        doc.text("Spv. Finance", 159, yPos);
 
 
         // doc.text("Pemohon", 39.5, yPos);
         // doc.text("Mengetahui", 98, yPos);
         // doc.text("Menyetujui", 151, yPos);
-        yPos += 5;
+        yPos += 2;
         doc.line(20, yPos, 190, yPos);
-        // doc.addImage(data,'png', 35, yPos,25,25);
-        yPos += 21;
+        // doc.addImage(data,'png', 27, yPos-5,27,27);
+        yPos += 16;
         doc.line(20, yPos, 190, yPos);
         yPos += 5;
 
         doc.setFontSize(8);
         doc.text("Nama :", 23, yPos);
-        // doc.text(nama, 37, yPos);
+        // doc.text(nama, 33, yPos);
         doc.text("Nama :", 64.5, yPos);
         doc.text("Nama :", 108, yPos);
         doc.text("Nama :", 150.5, yPos);
@@ -422,12 +485,60 @@ $(document).ready(function() {
         doc.line(20, yPos, 190, yPos);
         yPos += 5;
         doc.text("Tanggal :", 23, yPos);
-        // doc.text(date, 40, yPos);
+        // doc.text(date, 36, yPos);
         doc.text("Tanggal :", 64.5, yPos);
         doc.text("Tanggal :", 108, yPos);
         doc.text("Tanggal :", 150.5, yPos);
         yPos += 3;
         doc.line(20, yPos, 190, yPos);
+
+        // // garis vertical
+        // doc.line(20, yPos+49, 20, yPos);
+        // doc.line(62.5, yPos+49, 62.5, yPos);
+        // doc.line(105, yPos+49, 105, yPos);
+        // doc.line(147.5, yPos+49, 147.5, yPos);
+        // doc.line(190, yPos+49, 190, yPos);
+        // // doc.line(20, yPos+49, 20, yPos);
+        // // doc.line(76.6, yPos+49, 76.6, yPos);
+        // // doc.line(133.4, yPos+49, 133.4, yPos);
+        // // doc.line(190, yPos+49, 190, yPos);
+
+
+        // // garis horizontal
+        // doc.line(20, yPos, 190, yPos);
+        // yPos += 7;
+        // doc.text("Pemohon", 34, yPos);
+        // doc.text("Menyetujui", 76, yPos);
+        // doc.text("Mengetahui", 118, yPos);
+        // doc.text("Mengetahui", 160, yPos);
+
+
+        // // doc.text("Pemohon", 39.5, yPos);
+        // // doc.text("Mengetahui", 98, yPos);
+        // // doc.text("Menyetujui", 151, yPos);
+        // yPos += 5;
+        // doc.line(20, yPos, 190, yPos);
+        // // doc.addImage(data,'png', 35, yPos,25,25);
+        // yPos += 21;
+        // doc.line(20, yPos, 190, yPos);
+        // yPos += 5;
+
+        // doc.setFontSize(8);
+        // doc.text("Nama :", 23, yPos);
+        // // doc.text(nama, 37, yPos);
+        // doc.text("Nama :", 64.5, yPos);
+        // doc.text("Nama :", 108, yPos);
+        // doc.text("Nama :", 150.5, yPos);
+        // yPos += 3;
+        // doc.line(20, yPos, 190, yPos);
+        // yPos += 5;
+        // doc.text("Tanggal :", 23, yPos);
+        // // doc.text(date, 40, yPos);
+        // doc.text("Tanggal :", 64.5, yPos);
+        // doc.text("Tanggal :", 108, yPos);
+        // doc.text("Tanggal :", 150.5, yPos);
+        // yPos += 3;
+        // doc.line(20, yPos, 190, yPos);
 
         yPos += 30;
         doc.setFontType('bold');
@@ -474,7 +585,7 @@ $(document).ready(function() {
 
     function simpan_to_trello(data_perjalanan_dinas){
         var no_surat = $('#no_surat').val();
-        var no_surat_tugas = $('#no_surat_tugas').val();
+        // var no_surat_tugas = $('#no_surat_tugas').val();
         var nama = $('#nama').val();
         var nik = $('#nik').val();
         var jabatan = $('#jabatan').val();
@@ -513,7 +624,7 @@ $(document).ready(function() {
 
         var name = no_surat + ' || ' + 'Perjalanan Dinas' + ' || ' + departemen+ ' || ' + nama ;
         var desc =  'No. Surat : '+ no_surat + '\n' +
-                    'No. Surat Tugas : '+ no_surat_tugas + '\n' +
+                    // 'No. Surat Tugas : '+ no_surat_tugas + '\n' +
                     'NIK : '+ nik + '\n' +
                     'Nama : '+ nama + '\n' +
                     'Jabatan : '+ jabatan + '\n' +
@@ -617,7 +728,7 @@ $(document).ready(function() {
     // Simpan Ke Database
     function simpan_local(){
         var no_surat = $('#no_surat').val();
-        var no_surat_tugas = $('#no_surat_tugas').val();
+        // var no_surat_tugas = $('#no_surat_tugas').val();
         var nama = $('#nama').val();
         var nik = $('#nik').val();
         var jabatan = $('#jabatan').val();
@@ -645,7 +756,7 @@ $(document).ready(function() {
         let form_data = new FormData();
 
         form_data.append('no_surat',no_surat);
-        form_data.append('no_surat_tugas',no_surat_tugas);
+        // form_data.append('no_surat_tugas',no_surat_tugas);
         form_data.append('nama',nama);
         form_data.append('nik',nik);
         form_data.append('jabatan',jabatan);
@@ -687,7 +798,7 @@ $(document).ready(function() {
                         confirmButtonColor: '#7cd1f9',
                     });
                 }else{
-                    simpan_to_trello(response.data);
+                    // simpan_to_trello(response.data);
                     Generate_PDF(response.data);
                     Swal.fire({
                         title: "Pengajuan Diterima",

@@ -11,7 +11,7 @@ class Perjalanan_Dinas extends Model
     protected $table = 'perjalanan_dinas';
     protected $fillable = [
         'no_surat',
-        'no_surat_tugas',
+        // 'no_surat_tugas',
         'nama',
         'nik',
         'jabatan',
