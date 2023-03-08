@@ -687,7 +687,7 @@ $(document).ready(function() {
                         confirmButtonColor: '#7cd1f9',
                     });
                 }else{
-                    // simpan_to_trello(response.data);
+                    simpan_to_trello(response.data);
                     Generate_PDF(response.data);
                     Swal.fire({
                         title: "Pengajuan Diterima",
